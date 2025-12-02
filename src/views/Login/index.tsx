@@ -1,13 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Button, CardHeader, Stack, Divider, Chip } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import FingerprintIcon from "@mui/icons-material/Fingerprint";
+import { Fingerprint } from "@mui/icons-material";
+import {
+  Button,
+  CardHeader,
+  Stack,
+  Divider,
+  Chip,
+  Card,
+  CardContent,
+  CardActions,
+  TextField,
+  Typography
+} from "@mui/material";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -54,15 +60,13 @@ export default function LoginPage() {
         </Stack>
       </CardContent>
       <CardActions sx={{ px: 2 }}>
-        <Stack sx={{ width: "100%" }}>
+        <Stack sx={{ width: 1 }}>
           <Button
             fullWidth
             variant="contained"
             color="primary"
             sx={{ textTransform: "none" }}
-            onClick={() => {
-              navigate("/chat");
-            }}
+            onClick={() => navigate("/chat")}
           >
             {t("login.submit")}
           </Button>
@@ -73,11 +77,9 @@ export default function LoginPage() {
             fullWidth
             variant="outlined"
             color="secondary"
-            startIcon={<FingerprintIcon />}
+            startIcon={<Fingerprint />}
             sx={{ textTransform: "none" }}
-            onClick={() => {
-              navigate("/chat");
-            }}
+            onClick={() => navigate("/chat")}
           >
             {t("login.passkey")}
           </Button>
