@@ -55,7 +55,8 @@ export default function LoginPage() {
         sx={{
           borderRadius: 3,
           boxShadow: 4,
-          py: 2
+          py: 2,
+          userSelect: "none"
         }}
       >
         <CardHeader
