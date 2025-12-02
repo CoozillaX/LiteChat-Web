@@ -3,7 +3,6 @@ import { useTranslation, Trans } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Fingerprint } from "@mui/icons-material";
 import {
@@ -19,13 +18,8 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-
-const loginSchema = z.object({
-  email: z.email("login.error.invalidEmail"),
-  password: z.string()
-});
-
-type LoginFormValues = z.infer<typeof loginSchema>;
+import { loginSchema } from "@/schemas/auth/login";
+import type { LoginSchemaValues } from "@/schemas/auth/login";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -39,17 +33,17 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting }
-  } = useForm<LoginFormValues>({
+  } = useForm<LoginSchemaValues>({
     resolver: zodResolver(loginSchema)
   });
 
   // Form submission handler
-  const onValidSubmit = (data: LoginFormValues) => {
+  const onValidSubmit = (data: LoginSchemaValues) => {
     console.log("Login attempt for:", data.email);
     console.log("Password:", data.password);
     // TODO: Integrate with backend API to handle login request
     if (data.password !== "ValidPass1!") {
-      setFailureMessage("login.error.invalidCredentials");
+      setFailureMessage("auth.error.invalidCredentials");
       return;
     }
     navigate("/chat");

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, MenuItem, IconButton, ListItemText } from "@mui/material";
-import TranslateIcon from "@mui/icons-material/Translate";
+import { Translate } from "@mui/icons-material";
 import { supportedLanguages } from "@/i18n";
 
 export default function LanguageSwitcher() {
@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
   return (
     <>
       <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
-        <TranslateIcon />
+        <Translate />
       </IconButton>
 
       <Menu open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(null)}>

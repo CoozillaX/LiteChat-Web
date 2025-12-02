@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Alert,
@@ -15,12 +14,8 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-
-const forgotPasswordSchema = z.object({
-  email: z.email("forgotPassword.error.invalidEmail")
-});
-
-type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
+import { forgotPasswordSchema } from "@/schemas/auth/forgotPassword";
+import type { ForgotPasswordSchemaValues } from "@/schemas/auth/forgotPassword";
 
 export default function ForgotPasswordPage() {
   const { t } = useTranslation();
@@ -34,12 +29,12 @@ export default function ForgotPasswordPage() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting }
-  } = useForm<ForgotPasswordFormValues>({
+  } = useForm<ForgotPasswordSchemaValues>({
     resolver: zodResolver(forgotPasswordSchema)
   });
 
   // Form submission handler
-  const onValidSubmit = (data: ForgotPasswordFormValues) => {
+  const onValidSubmit = (data: ForgotPasswordSchemaValues) => {
     console.log("Password reset email sent to:", data.email);
     // TODO: Integrate with backend API to handle password reset request
     setSuccessMessage("forgotPassword.success.emailSent");
@@ -77,10 +72,7 @@ export default function ForgotPasswordPage() {
               onClose={() => setSuccessMessage(null)}
               sx={{ mb: 2 }}
             >
-              <Trans
-                i18nKey={successMessage}
-                components={[<Link to="/" style={{ color: "#1976d2" }} />]}
-              />
+              {t(successMessage)}
             </Alert>
           )}
           <Stack>
@@ -106,6 +98,16 @@ export default function ForgotPasswordPage() {
             >
               {t("forgotPassword.submit")}
             </Button>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              align="center"
+              sx={{ mt: 2 }}
+            >
+              <Link to="/" style={{ color: "#1976d2" }}>
+                {t("forgotPassword.login")}
+              </Link>
+            </Typography>
           </Stack>
         </CardActions>
       </Card>
