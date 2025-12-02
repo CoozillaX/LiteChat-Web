@@ -7,7 +7,11 @@ export default {
     forgotPassword: "忘记密码?",
     submit: "登录",
     passkey: "使用密钥继续",
-    signup: "初次使用 LiteChat? <0>创建一个账号</0>"
+    signup: "初次使用 LiteChat? <0>创建一个账号</0>",
+    error: {
+      invalidEmail: "请输入有效的邮箱地址。",
+      invalidCredentials: "无效的凭据, 请重试。"
+    }
   },
   forgotPassword: {
     title: "找回密码",

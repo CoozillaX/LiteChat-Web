@@ -7,7 +7,11 @@ export default {
     forgotPassword: "Forgot Password?",
     submit: "Sign In",
     passkey: "Continue with Passkey",
-    signup: "New to LiteChat? <0>Create an account</0>"
+    signup: "New to LiteChat? <0>Create an account</0>",
+    error: {
+      invalidEmail: "Please enter a valid email address.",
+      invalidCredentials: "Invalid credentials, please try again."
+    }
   },
   forgotPassword: {
     title: "Forgot Password",
