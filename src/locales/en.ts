@@ -1,10 +1,12 @@
 export default {
   languageName: "English",
   login: {
-    title: "Login",
-    subtitle: "Enter your credentials to access LiteChat",
+    title: "Sign in to LiteChat",
     email: "Email",
     password: "Password",
-    submit: "LOGIN",
+    forgotPassword: "Forgot Password?",
+    submit: "Sign In",
+    passkey: "Continue with Passkey",
+    signup: "New to LiteChat? <0>Create an account</0>",
   },
 };
