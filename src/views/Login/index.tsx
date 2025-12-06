@@ -20,8 +20,7 @@ import {
   Typography
 } from "@mui/material";
 import PasswordField from "@/components/PasswordField";
-import { loginSchema } from "@/schemas/auth/login";
-import type { LoginSchemaValues } from "@/schemas/auth/login";
+import { loginSchema, type LoginSchemaValues } from "@/schemas/auth/login";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -95,6 +94,7 @@ export default function LoginPage() {
             />
             <PasswordField
               id="password"
+              autoComplete="current-password"
               label={t(I18nKeys.login.password)}
               variant="outlined"
               {...register("password")}

@@ -34,7 +34,6 @@ export default {
   [I18nKeys.forgotPassword.email]: "Email",
   [I18nKeys.forgotPassword.submit]: "Send password reset email",
   [I18nKeys.forgotPassword.login]: "Back to Login",
-
   [I18nKeys.forgotPassword.success.emailSent]:
     "A password reset link has been sent to your email address.",
 
@@ -46,10 +45,10 @@ export default {
   [I18nKeys.resetPassword.confirmPassword]: "Confirm New Password",
   [I18nKeys.resetPassword.submit]: "Reset Password",
   [I18nKeys.resetPassword.login]: "Back to Login",
-
   [I18nKeys.resetPassword.success.passwordReset]:
     "Your password has been successfully reset.",
-
+  [I18nKeys.resetPassword.error.invalidLink]:
+    "The password reset link is invalid or has expired. Please request a new link to continue.",
   [I18nKeys.resetPassword.error.passwordsDoNotMatch]:
     "The passwords entered do not match."
 };

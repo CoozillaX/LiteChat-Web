@@ -28,7 +28,6 @@ export default {
   [I18nKeys.forgotPassword.email]: "邮箱",
   [I18nKeys.forgotPassword.submit]: "发送重置密码邮件",
   [I18nKeys.forgotPassword.login]: "返回登录",
-
   [I18nKeys.forgotPassword.success.emailSent]: "重置密码链接已发送到您的邮箱。",
 
   // ===================== RESET PASSWORD =====================
@@ -38,8 +37,8 @@ export default {
   [I18nKeys.resetPassword.confirmPassword]: "确认新密码",
   [I18nKeys.resetPassword.submit]: "重置密码",
   [I18nKeys.resetPassword.login]: "返回登录",
-
   [I18nKeys.resetPassword.success.passwordReset]: "您的密码已成功重置。",
-
+  [I18nKeys.resetPassword.error.invalidLink]:
+    "密码重置链接无效或已过期，请尝试获取新的链接以继续操作。",
   [I18nKeys.resetPassword.error.passwordsDoNotMatch]: "两次输入的密码不匹配。"
 };

@@ -31,7 +31,6 @@ export const I18nKeys = {
     email: "forgotPassword.email",
     submit: "forgotPassword.submit",
     login: "forgotPassword.login",
-
     success: {
       emailSent: "forgotPassword.success.emailSent"
     }
@@ -44,12 +43,11 @@ export const I18nKeys = {
     confirmPassword: "resetPassword.confirmPassword",
     submit: "resetPassword.submit",
     login: "resetPassword.login",
-
     success: {
       passwordReset: "resetPassword.success.passwordReset"
     },
-
     error: {
+      invalidLink: "resetPassword.error.invalidLink",
       passwordsDoNotMatch: "resetPassword.error.passwordsDoNotMatch"
     }
   }
