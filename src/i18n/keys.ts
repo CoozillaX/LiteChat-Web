@@ -13,6 +13,13 @@ export const I18nKeys = {
     }
   },
 
+  turnstile: {
+    executing: "turnstile.executing",
+    error: {
+      invalidToken: "turnstile.error.invalidToken"
+    }
+  },
+
   login: {
     title: "login.title",
     email: "login.email",

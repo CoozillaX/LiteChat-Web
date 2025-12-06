@@ -12,6 +12,11 @@ export default {
   [I18nKeys.auth.error.numberRequired]: "密码必须包含至少一个数字。",
   [I18nKeys.auth.error.specialCharRequired]: "密码必须包含至少一个特殊字符。",
 
+  // ===================== TURNSTILE =====================
+  [I18nKeys.turnstile.executing]: "正在等待 Turnstile...",
+  [I18nKeys.turnstile.error.invalidToken]:
+    "Turnstile 验证令牌无效。请重新完成验证挑战。",
+
   // ===================== LOGIN =====================
   [I18nKeys.login.title]: "登录 LiteChat",
   [I18nKeys.login.email]: "邮箱",

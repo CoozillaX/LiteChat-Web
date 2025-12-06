@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -15,22 +15,30 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import { forgotPasswordSchema } from "@/schemas/auth/forgotPassword";
-import type { ForgotPasswordSchemaValues } from "@/schemas/auth/forgotPassword";
+import {
+  forgotPasswordSchema,
+  type ForgotPasswordSchemaValues
+} from "@/schemas/auth/forgotPassword";
+import LiteTurnstile, {
+  type LiteTurnstileRef
+} from "@/components/LiteTurnstile";
 
 export default function ForgotPasswordPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  // Turnstile
+  const turnstileRef = useRef<LiteTurnstileRef>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
   // Form success response
-  const [alertMessage, setAlertMessage] = useState<string | null>(null);
-  const [alertType, setAlertType] = useState<"success" | "error" | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // React Hook Form setup
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isSubmitting }
   } = useForm<ForgotPasswordSchemaValues>({
     resolver: zodResolver(forgotPasswordSchema)
@@ -38,11 +46,18 @@ export default function ForgotPasswordPage() {
 
   // Form submission handler
   const onValidSubmit = (data: ForgotPasswordSchemaValues) => {
+    // Reset messages
+    setErrorMessage(null);
+    console.log("Turnstile token:", turnstileToken);
     console.log("Password reset email sent to:", data.email);
     // TODO: Integrate with backend API to handle password reset request
-    setAlertMessage(I18nKeys.forgotPassword.success.emailSent);
-    setAlertType("success");
-    reset();
+    if (turnstileToken && data.email == "example@example.com") {
+      setSuccessMessage(I18nKeys.forgotPassword.success.emailSent);
+    } else {
+      setErrorMessage(I18nKeys.turnstile.error.invalidToken);
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+    }
   };
 
   return (
@@ -62,7 +77,7 @@ export default function ForgotPasswordPage() {
             </Typography>
           }
           subheader={
-            !alertMessage && (
+            !successMessage && (
               <Typography variant="body2" color="text.secondary" sx={{ pt: 1 }}>
                 {t(I18nKeys.forgotPassword.subtitle)}
               </Typography>
@@ -72,10 +87,12 @@ export default function ForgotPasswordPage() {
             textAlign: "center"
           }}
         />
-        {alertMessage ? (
+        {successMessage ? (
           <>
             <CardContent>
-              <Alert severity={alertType || "info"}>{t(alertMessage)}</Alert>
+              <Alert severity={"success"} sx={{ mb: 2 }}>
+                {t(successMessage)}
+              </Alert>
             </CardContent>
             <CardActions sx={{ px: 2, pb: 2 }}>
               <Button
@@ -92,7 +109,15 @@ export default function ForgotPasswordPage() {
         ) : (
           <>
             <CardContent>
-              <Stack>
+              <Stack spacing={2}>
+                {errorMessage && (
+                  <Alert
+                    severity={"error"}
+                    onClose={() => setErrorMessage(null)}
+                  >
+                    {t(errorMessage)}
+                  </Alert>
+                )}
                 <TextField
                   id="email"
                   label={t(I18nKeys.forgotPassword.email)}
@@ -100,6 +125,11 @@ export default function ForgotPasswordPage() {
                   {...register("email")}
                   error={!!errors.email}
                   helperText={errors.email ? t(errors.email.message || "") : ""}
+                />
+                <LiteTurnstile
+                  ref={turnstileRef}
+                  onVerify={(token) => setTurnstileToken(token)}
+                  onExpire={() => setTurnstileToken(null)}
                 />
               </Stack>
             </CardContent>
@@ -111,9 +141,13 @@ export default function ForgotPasswordPage() {
                   variant="contained"
                   color="primary"
                   sx={{ textTransform: "none" }}
-                  disabled={isSubmitting}
+                  disabled={!turnstileToken || isSubmitting}
                 >
-                  {t(I18nKeys.forgotPassword.submit)}
+                  {t(
+                    turnstileToken
+                      ? I18nKeys.forgotPassword.submit
+                      : I18nKeys.turnstile.executing
+                  )}
                 </Button>
                 <Typography
                   variant="body2"

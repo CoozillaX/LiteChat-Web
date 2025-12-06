@@ -18,6 +18,11 @@ export default {
   [I18nKeys.auth.error.specialCharRequired]:
     "Password must contain at least one special character.",
 
+  // ===================== TURNSTILE =====================
+  [I18nKeys.turnstile.executing]: "Waiting for Turnstile...",
+  [I18nKeys.turnstile.error.invalidToken]:
+    "The Turnstile verification token is invalid. Please complete the challenge again.",
+
   // ===================== LOGIN =====================
   [I18nKeys.login.title]: "Sign in to LiteChat",
   [I18nKeys.login.email]: "Email",
