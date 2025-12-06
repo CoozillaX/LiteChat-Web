@@ -1,8 +1,9 @@
 import { z } from "zod";
+import { I18nKeys } from "@/i18n/keys";
 import { passwordSchema } from "@/schemas/auth/password";
 
 export const loginSchema = z.object({
-  email: z.email("auth.error.invalidEmail"),
+  email: z.email(I18nKeys.auth.error.invalidEmail),
   password: passwordSchema
 });
 

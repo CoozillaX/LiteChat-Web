@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { I18nKeys } from "@/i18n/keys";
 import { Fingerprint } from "@mui/icons-material";
 import {
   Alert,
@@ -18,6 +19,7 @@ import {
   TextField,
   Typography
 } from "@mui/material";
+import PasswordField from "@/components/PasswordField";
 import { loginSchema } from "@/schemas/auth/login";
 import type { LoginSchemaValues } from "@/schemas/auth/login";
 
@@ -43,7 +45,7 @@ export default function LoginPage() {
     console.log("Password:", data.password);
     // TODO: Integrate with backend API to handle login request
     if (data.password !== "ValidPass1!") {
-      setFailureMessage("auth.error.invalidCredentials");
+      setFailureMessage(I18nKeys.login.error.invalidCredentials);
       return;
     }
     navigate("/chat");
@@ -62,7 +64,7 @@ export default function LoginPage() {
         <CardHeader
           title={
             <Typography variant="h5" fontWeight={600}>
-              {t("login.title")}
+              {t(I18nKeys.login.title)}
             </Typography>
           }
           sx={{
@@ -85,16 +87,15 @@ export default function LoginPage() {
           <Stack>
             <TextField
               id="email"
-              label={t("login.email")}
+              label={t(I18nKeys.login.email)}
               variant="outlined"
               {...register("email")}
               error={!!errors.email}
               helperText={errors.email ? t(errors.email.message || "") : ""}
             />
-            <TextField
+            <PasswordField
               id="password"
-              label={t("login.password")}
-              type="password"
+              label={t(I18nKeys.login.password)}
               variant="outlined"
               {...register("password")}
               error={!!errors.password}
@@ -110,7 +111,7 @@ export default function LoginPage() {
               sx={{ mt: 1 }}
             >
               <Link to="/forgot-password" style={{ color: "#1976d2" }}>
-                {t("login.forgotPassword")}
+                {t(I18nKeys.login.forgotPassword)}
               </Link>
             </Typography>
           </Stack>
@@ -125,7 +126,7 @@ export default function LoginPage() {
               sx={{ textTransform: "none" }}
               disabled={isSubmitting}
             >
-              {t("login.submit")}
+              {t(I18nKeys.login.submit)}
             </Button>
             <Divider sx={{ my: 2 }}>
               <Chip label="or" size="small" />
@@ -138,7 +139,7 @@ export default function LoginPage() {
               sx={{ textTransform: "none" }}
               onClick={() => navigate("/chat")}
             >
-              {t("login.passkey")}
+              {t(I18nKeys.login.passkey)}
             </Button>
             <Typography
               variant="body2"
@@ -147,7 +148,7 @@ export default function LoginPage() {
               sx={{ mt: 2 }}
             >
               <Trans
-                i18nKey={"login.signup"}
+                i18nKey={I18nKeys.login.signup}
                 components={[
                   <Link to="/signup" style={{ color: "#1976d2" }} />
                 ]}

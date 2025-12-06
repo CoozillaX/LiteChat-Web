@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { I18nKeys } from "@/i18n/keys";
 import {
   Alert,
   Button,
@@ -37,7 +38,7 @@ export default function ForgotPasswordPage() {
   const onValidSubmit = (data: ForgotPasswordSchemaValues) => {
     console.log("Password reset email sent to:", data.email);
     // TODO: Integrate with backend API to handle password reset request
-    setSuccessMessage("forgotPassword.success.emailSent");
+    setSuccessMessage(I18nKeys.forgotPassword.success.emailSent);
     reset();
   };
 
@@ -54,12 +55,12 @@ export default function ForgotPasswordPage() {
         <CardHeader
           title={
             <Typography variant="h5" fontWeight={600}>
-              {t("forgotPassword.title")}
+              {t(I18nKeys.forgotPassword.title)}
             </Typography>
           }
           subheader={
             <Typography variant="body2" color="text.secondary" sx={{ pt: 1 }}>
-              {t("forgotPassword.subtitle")}
+              {t(I18nKeys.forgotPassword.subtitle)}
             </Typography>
           }
           sx={{
@@ -79,7 +80,7 @@ export default function ForgotPasswordPage() {
           <Stack>
             <TextField
               id="email"
-              label={t("forgotPassword.email")}
+              label={t(I18nKeys.forgotPassword.email)}
               variant="outlined"
               {...register("email")}
               error={!!errors.email}
@@ -97,7 +98,7 @@ export default function ForgotPasswordPage() {
               sx={{ textTransform: "none" }}
               disabled={isSubmitting}
             >
-              {t("forgotPassword.submit")}
+              {t(I18nKeys.forgotPassword.submit)}
             </Button>
             <Typography
               variant="body2"
@@ -106,7 +107,7 @@ export default function ForgotPasswordPage() {
               sx={{ mt: 2 }}
             >
               <Link to="/" style={{ color: "#1976d2" }}>
-                {t("forgotPassword.login")}
+                {t(I18nKeys.forgotPassword.login)}
               </Link>
             </Typography>
           </Stack>
