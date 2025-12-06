@@ -150,7 +150,7 @@ export default function LoginPage() {
               <Trans
                 i18nKey={I18nKeys.login.signup}
                 components={[
-                  <Link to="/signup" style={{ color: "#1976d2" }} />
+                  <Link to="/request-signup" style={{ color: "#1976d2" }} />
                 ]}
               />
             </Typography>

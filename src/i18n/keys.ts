@@ -50,6 +50,17 @@ export const I18nKeys = {
       invalidLink: "resetPassword.error.invalidLink",
       passwordsDoNotMatch: "resetPassword.error.passwordsDoNotMatch"
     }
+  },
+
+  requestSignup: {
+    title: "requestSignup.title",
+    subtitle: "requestSignup.subtitle",
+    email: "requestSignup.email",
+    submit: "requestSignup.submit",
+    login: "requestSignup.login",
+    success: {
+      requestSent: "requestSignup.success.requestSent"
+    }
   }
 } as const;
 

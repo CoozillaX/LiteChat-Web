@@ -32,7 +32,7 @@ export default {
   [I18nKeys.forgotPassword.subtitle]:
     "Enter your email address and we'll send you a link to reset your password.",
   [I18nKeys.forgotPassword.email]: "Email",
-  [I18nKeys.forgotPassword.submit]: "Send password reset email",
+  [I18nKeys.forgotPassword.submit]: "Send Password Reset Email",
   [I18nKeys.forgotPassword.login]: "Back to Login",
   [I18nKeys.forgotPassword.success.emailSent]:
     "A password reset link has been sent to your email address.",
@@ -50,5 +50,15 @@ export default {
   [I18nKeys.resetPassword.error.invalidLink]:
     "The password reset link is invalid or has expired. Please request a new link to continue.",
   [I18nKeys.resetPassword.error.passwordsDoNotMatch]:
-    "The passwords entered do not match."
+    "The passwords entered do not match.",
+
+  // ===================== REQUEST SIGNUP =====================
+  [I18nKeys.requestSignup.title]: "Sign up for LiteChat",
+  [I18nKeys.requestSignup.subtitle]:
+    "Enter your email and we'll send you a link to create your account.",
+  [I18nKeys.requestSignup.email]: "Email",
+  [I18nKeys.requestSignup.submit]: "Send Sign-up Email",
+  [I18nKeys.requestSignup.login]: "Back to Login",
+  [I18nKeys.requestSignup.success.requestSent]:
+    "A sign-up link has been sent to your email address.",
 };

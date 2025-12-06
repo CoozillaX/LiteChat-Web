@@ -28,7 +28,7 @@ export default {
   [I18nKeys.forgotPassword.email]: "邮箱",
   [I18nKeys.forgotPassword.submit]: "发送重置密码邮件",
   [I18nKeys.forgotPassword.login]: "返回登录",
-  [I18nKeys.forgotPassword.success.emailSent]: "重置密码链接已发送到您的邮箱。",
+  [I18nKeys.forgotPassword.success.emailSent]: "密码重置链接已发送到您的邮箱。",
 
   // ===================== RESET PASSWORD =====================
   [I18nKeys.resetPassword.title]: "重置密码",
@@ -40,5 +40,15 @@ export default {
   [I18nKeys.resetPassword.success.passwordReset]: "您的密码已成功重置。",
   [I18nKeys.resetPassword.error.invalidLink]:
     "密码重置链接无效或已过期，请尝试获取新的链接以继续操作。",
-  [I18nKeys.resetPassword.error.passwordsDoNotMatch]: "两次输入的密码不匹配。"
+  [I18nKeys.resetPassword.error.passwordsDoNotMatch]: "两次输入的密码不匹配。",
+
+  // ===================== REQUEST SIGNUP =====================
+  [I18nKeys.requestSignup.title]: "注册 LiteChat",
+  [I18nKeys.requestSignup.subtitle]:
+    "请输入您的邮箱，我们会向您发送一封包含注册链接的邮件。",
+  [I18nKeys.requestSignup.email]: "邮箱",
+  [I18nKeys.requestSignup.submit]: "发送注册邮件",
+  [I18nKeys.requestSignup.login]: "返回登录",
+  [I18nKeys.requestSignup.success.requestSent]:
+    "注册链接已发送到您的邮箱。",
 };

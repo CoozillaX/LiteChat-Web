@@ -15,10 +15,12 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import { forgotPasswordSchema } from "@/schemas/auth/forgotPassword";
-import type { ForgotPasswordSchemaValues } from "@/schemas/auth/forgotPassword";
+import {
+  requestSignupSchema,
+  type RequestSignupSchemaValues
+} from "@/schemas/auth/requestSignup";
 
-export default function ForgotPasswordPage() {
+export default function RequestSignupPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -32,15 +34,15 @@ export default function ForgotPasswordPage() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting }
-  } = useForm<ForgotPasswordSchemaValues>({
-    resolver: zodResolver(forgotPasswordSchema)
+  } = useForm<RequestSignupSchemaValues>({
+    resolver: zodResolver(requestSignupSchema)
   });
 
   // Form submission handler
-  const onValidSubmit = (data: ForgotPasswordSchemaValues) => {
-    console.log("Password reset email sent to:", data.email);
+  const onValidSubmit = (data: RequestSignupSchemaValues) => {
+    console.log("Signup request sent for:", data.email);
     // TODO: Integrate with backend API to handle password reset request
-    setAlertMessage(I18nKeys.forgotPassword.success.emailSent);
+    setAlertMessage(I18nKeys.requestSignup.success.requestSent);
     setAlertType("success");
     reset();
   };
@@ -58,13 +60,13 @@ export default function ForgotPasswordPage() {
         <CardHeader
           title={
             <Typography variant="h5" fontWeight={600}>
-              {t(I18nKeys.forgotPassword.title)}
+              {t(I18nKeys.requestSignup.title)}
             </Typography>
           }
           subheader={
             !alertMessage && (
               <Typography variant="body2" color="text.secondary" sx={{ pt: 1 }}>
-                {t(I18nKeys.forgotPassword.subtitle)}
+                {t(I18nKeys.requestSignup.subtitle)}
               </Typography>
             )
           }
@@ -75,18 +77,23 @@ export default function ForgotPasswordPage() {
         {alertMessage ? (
           <>
             <CardContent>
-              <Alert severity={alertType || "info"}>{t(alertMessage)}</Alert>
+              <Alert severity={alertType || "info"} sx={{ mb: 2 }}>
+                {t(alertMessage)}
+              </Alert>
             </CardContent>
-            <CardActions sx={{ px: 2, pb: 2 }}>
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                sx={{ textTransform: "none" }}
-                onClick={() => navigate("/")}
-              >
-                {t(I18nKeys.forgotPassword.login)}
-              </Button>
+            <CardActions sx={{ px: 2 }}>
+              <Stack sx={{ width: 1 }}>
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  sx={{ textTransform: "none" }}
+                  onClick={() => navigate("/")}
+                >
+                  {t(I18nKeys.requestSignup.login)}
+                </Button>
+              </Stack>
             </CardActions>
           </>
         ) : (
@@ -95,7 +102,7 @@ export default function ForgotPasswordPage() {
               <Stack>
                 <TextField
                   id="email"
-                  label={t(I18nKeys.forgotPassword.email)}
+                  label={t(I18nKeys.requestSignup.email)}
                   variant="outlined"
                   {...register("email")}
                   error={!!errors.email}
@@ -113,7 +120,7 @@ export default function ForgotPasswordPage() {
                   sx={{ textTransform: "none" }}
                   disabled={isSubmitting}
                 >
-                  {t(I18nKeys.forgotPassword.submit)}
+                  {t(I18nKeys.requestSignup.submit)}
                 </Button>
                 <Typography
                   variant="body2"
@@ -122,7 +129,7 @@ export default function ForgotPasswordPage() {
                   sx={{ mt: 2 }}
                 >
                   <Link to="/" style={{ color: "#1976d2" }}>
-                    {t(I18nKeys.forgotPassword.login)}
+                    {t(I18nKeys.requestSignup.login)}
                   </Link>
                 </Typography>
               </Stack>
