@@ -5,6 +5,7 @@ export const I18nKeys = {
     error: {
       invalidEmail: "auth.error.invalidEmail",
       shortPassword: "auth.error.shortPassword",
+      noLeadingTrailingSpaces: "auth.error.noLeadingTrailingSpaces",
       uppercaseRequired: "auth.error.uppercaseRequired",
       lowercaseRequired: "auth.error.lowercaseRequired",
       numberRequired: "auth.error.numberRequired",
@@ -60,6 +61,25 @@ export const I18nKeys = {
     login: "requestSignup.login",
     success: {
       requestSent: "requestSignup.success.requestSent"
+    }
+  },
+
+  completeSignup: {
+    title: "completeSignup.title",
+    subtitle: "completeSignup.subtitle",
+    firstName: "completeSignup.firstName",
+    lastName: "completeSignup.lastName",
+    password: "completeSignup.password",
+    confirmPassword: "completeSignup.confirmPassword",
+    submit: "completeSignup.submit",
+    login: "completeSignup.login",
+    error: {
+      invalidLink: "completeSignup.error.invalidLink",
+      firstNameRequired: "completeSignup.error.firstNameRequired",
+      passwordsDoNotMatch: "completeSignup.error.passwordsDoNotMatch"
+    },
+    success: {
+      signupComplete: "completeSignup.success.signupComplete"
     }
   }
 } as const;

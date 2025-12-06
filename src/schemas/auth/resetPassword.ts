@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { I18nKeys } from "@/i18n/keys";
-import { passwordSchema } from "@/schemas/auth/password";
+import { passwordSchema } from "./password";
 
 export const resetPasswordSchema = z
   .object({

@@ -1,0 +1,20 @@
+import { z } from "zod";
+import { I18nKeys } from "@/i18n/keys";
+import { passwordSchema } from "./password";
+
+export const completeSignupSchema = z
+  .object({
+    firstName: z
+      .string()
+      .trim()
+      .min(1, I18nKeys.completeSignup.error.firstNameRequired),
+    lastName: z.string().trim(),
+    password: passwordSchema,
+    confirmPassword: z.string()
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: I18nKeys.completeSignup.error.passwordsDoNotMatch
+  });
+
+export type CompleteSignupSchemaValues = z.infer<typeof completeSignupSchema>;

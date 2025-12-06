@@ -12,15 +12,16 @@ import {
   CardContent,
   CardHeader,
   Stack,
+  TextField,
   Typography
 } from "@mui/material";
 import PasswordField from "@/components/PasswordField";
 import {
-  resetPasswordSchema,
-  type ResetPasswordSchemaValues
-} from "@/schemas/auth/resetPassword";
+  completeSignupSchema,
+  type CompleteSignupSchemaValues
+} from "@/schemas/auth/completeSignup";
 
-export default function ResetPasswordPage() {
+export default function CompleteSignupPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -36,16 +37,16 @@ export default function ResetPasswordPage() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting }
-  } = useForm<ResetPasswordSchemaValues>({
-    resolver: zodResolver(resetPasswordSchema)
+  } = useForm<CompleteSignupSchemaValues>({
+    resolver: zodResolver(completeSignupSchema)
   });
 
   // Form submission handler
-  const onValidSubmit = (data: ResetPasswordSchemaValues) => {
+  const onValidSubmit = (data: CompleteSignupSchemaValues) => {
     console.log("Token:", token);
-    console.log("Password reset to:", data.newPassword);
+    console.log("Signup completed with data:", data);
     // TODO: Integrate with backend API to handle password reset request
-    setAlertMessage(I18nKeys.resetPassword.success.passwordReset);
+    setAlertMessage(I18nKeys.completeSignup.success.signupComplete);
     setAlertType("success");
   };
 
@@ -54,7 +55,7 @@ export default function ResetPasswordPage() {
     if (
       !token /* && verifyToken(token) // TODO: Add token verification logic */
     ) {
-      setAlertMessage(I18nKeys.resetPassword.error.invalidLink);
+      setAlertMessage(I18nKeys.completeSignup.error.invalidLink);
       setAlertType("error");
     }
   }, [token]);
@@ -72,12 +73,12 @@ export default function ResetPasswordPage() {
         <CardHeader
           title={
             <Typography variant="h5" fontWeight={600}>
-              {t(I18nKeys.resetPassword.title)}
+              {t(I18nKeys.completeSignup.title)}
             </Typography>
           }
           subheader={
             <Typography variant="body2" color="text.secondary" sx={{ pt: 1 }}>
-              {t(I18nKeys.resetPassword.subtitle)}
+              {t(I18nKeys.completeSignup.subtitle)}
             </Typography>
           }
           sx={{
@@ -106,23 +107,43 @@ export default function ResetPasswordPage() {
           <>
             <CardContent>
               <Stack spacing={2}>
+                <TextField
+                  id="first-name"
+                  autoComplete="given-name"
+                  label={t(I18nKeys.completeSignup.firstName)}
+                  variant="outlined"
+                  {...register("firstName")}
+                  error={!!errors.firstName}
+                  helperText={
+                    errors.firstName ? t(errors.firstName.message || "") : ""
+                  }
+                />
+                <TextField
+                  id="last-name"
+                  autoComplete="family-name"
+                  label={t(I18nKeys.completeSignup.lastName)}
+                  variant="outlined"
+                  {...register("lastName")}
+                  error={!!errors.lastName}
+                  helperText={
+                    errors.lastName ? t(errors.lastName.message || "") : ""
+                  }
+                />
                 <PasswordField
                   id="new-password"
                   autoComplete="new-password"
-                  label={t(I18nKeys.resetPassword.newPassword)}
+                  label={t(I18nKeys.completeSignup.password)}
                   variant="outlined"
-                  {...register("newPassword")}
-                  error={!!errors.newPassword}
+                  {...register("password")}
+                  error={!!errors.password}
                   helperText={
-                    errors.newPassword
-                      ? t(errors.newPassword.message || "")
-                      : ""
+                    errors.password ? t(errors.password.message || "") : ""
                   }
                 />
                 <PasswordField
                   id="confirm-password"
                   autoComplete="new-password"
-                  label={t(I18nKeys.resetPassword.confirmPassword)}
+                  label={t(I18nKeys.completeSignup.confirmPassword)}
                   variant="outlined"
                   {...register("confirmPassword")}
                   error={!!errors.confirmPassword}
@@ -145,7 +166,7 @@ export default function ResetPasswordPage() {
                   sx={{ textTransform: "none" }}
                   disabled={isSubmitting}
                 >
-                  {t(I18nKeys.resetPassword.submit)}
+                  {t(I18nKeys.completeSignup.submit)}
                 </Button>
               </Stack>
             </CardActions>

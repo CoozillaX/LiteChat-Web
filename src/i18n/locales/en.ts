@@ -7,6 +7,8 @@ export default {
   [I18nKeys.auth.error.invalidEmail]: "Please enter a valid email address.",
   [I18nKeys.auth.error.shortPassword]:
     "Password must be at least 8 characters long.",
+  [I18nKeys.auth.error.noLeadingTrailingSpaces]:
+    "Password must not have leading or trailing spaces.",
   [I18nKeys.auth.error.uppercaseRequired]:
     "Password must contain at least one uppercase letter.",
   [I18nKeys.auth.error.lowercaseRequired]:
@@ -61,4 +63,22 @@ export default {
   [I18nKeys.requestSignup.login]: "Back to Login",
   [I18nKeys.requestSignup.success.requestSent]:
     "A sign-up link has been sent to your email address.",
+
+  // ===================== COMPLETE SIGNUP =====================
+  [I18nKeys.completeSignup.title]: "Sign Up for LiteChat",
+  [I18nKeys.completeSignup.subtitle]:
+    "You need to provide some additional information to complete your sign-up.",
+  [I18nKeys.completeSignup.firstName]: "First Name",
+  [I18nKeys.completeSignup.lastName]: "Last Name (Optional)",
+  [I18nKeys.completeSignup.password]: "Password",
+  [I18nKeys.completeSignup.confirmPassword]: "Confirm Password",
+  [I18nKeys.completeSignup.submit]: "Create Account",
+  [I18nKeys.completeSignup.login]: "Back to Login",
+  [I18nKeys.completeSignup.error.invalidLink]:
+    "The sign-up link is invalid or has expired. Please request a new link to continue.",
+  [I18nKeys.completeSignup.error.firstNameRequired]: "First name is required.",
+  [I18nKeys.completeSignup.error.passwordsDoNotMatch]:
+    "The passwords entered do not match.",
+  [I18nKeys.completeSignup.success.signupComplete]:
+    "You have successfully completed sign-up! Welcome to LiteChat!"
 };

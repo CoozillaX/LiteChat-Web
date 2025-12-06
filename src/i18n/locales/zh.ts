@@ -6,6 +6,7 @@ export default {
   // ===================== AUTH =====================
   [I18nKeys.auth.error.invalidEmail]: "请输入有效的邮箱地址。",
   [I18nKeys.auth.error.shortPassword]: "密码长度至少为 8 个字符。",
+  [I18nKeys.auth.error.noLeadingTrailingSpaces]: "密码开头和结尾不能包含空格。",
   [I18nKeys.auth.error.uppercaseRequired]: "密码必须包含至少一个大写字母。",
   [I18nKeys.auth.error.lowercaseRequired]: "密码必须包含至少一个小写字母。",
   [I18nKeys.auth.error.numberRequired]: "密码必须包含至少一个数字。",
@@ -49,6 +50,21 @@ export default {
   [I18nKeys.requestSignup.email]: "邮箱",
   [I18nKeys.requestSignup.submit]: "发送注册邮件",
   [I18nKeys.requestSignup.login]: "返回登录",
-  [I18nKeys.requestSignup.success.requestSent]:
-    "注册链接已发送到您的邮箱。",
+  [I18nKeys.requestSignup.success.requestSent]: "注册链接已发送到您的邮箱。",
+
+  // ===================== COMPLETE SIGNUP =====================
+  [I18nKeys.completeSignup.title]: "注册 LiteChat",
+  [I18nKeys.completeSignup.subtitle]: "您需要提供一些额外的信息以完成注册。",
+  [I18nKeys.completeSignup.firstName]: "名",
+  [I18nKeys.completeSignup.lastName]: "姓 (可选)",
+  [I18nKeys.completeSignup.password]: "密码",
+  [I18nKeys.completeSignup.confirmPassword]: "确认密码",
+  [I18nKeys.completeSignup.submit]: "完成注册",
+  [I18nKeys.completeSignup.login]: "返回登录",
+  [I18nKeys.completeSignup.error.invalidLink]:
+    "注册链接无效或已过期，请尝试获取新的链接以继续操作。",
+  [I18nKeys.completeSignup.error.firstNameRequired]: "请输入您的名字。",
+  [I18nKeys.completeSignup.error.passwordsDoNotMatch]: "两次输入的密码不匹配。",
+  [I18nKeys.completeSignup.success.signupComplete]:
+    "您已完成注册！欢迎使用 LiteChat！"
 };

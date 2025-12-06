@@ -3,6 +3,9 @@ import { I18nKeys } from "@/i18n/keys";
 
 export const passwordSchema = z
   .string()
+  .refine((val) => val.trim() === val, {
+    message: I18nKeys.auth.error.noLeadingTrailingSpaces
+  })
   .min(8, I18nKeys.auth.error.shortPassword)
   .regex(/[A-Z]/, I18nKeys.auth.error.uppercaseRequired)
   .regex(/[a-z]/, I18nKeys.auth.error.lowercaseRequired)
