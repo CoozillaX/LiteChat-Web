@@ -18,8 +18,7 @@ export default function ContactList() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: 1,
-        minHeighgt: 0
+        height: 1
       }}
     >
       <Typography

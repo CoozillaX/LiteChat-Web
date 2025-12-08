@@ -3,6 +3,7 @@ import { Tabs, Tab, Box, Fade } from "@mui/material";
 import { Contacts, Chat, Settings } from "@mui/icons-material";
 import ContactList from "./ContactList";
 import ChatList from "./ChatList";
+import SettingList from "./SettingList";
 
 const tabItems = [
   {
@@ -18,7 +19,7 @@ const tabItems = [
   {
     label: "Settings",
     icon: <Settings />,
-    component: <div>Item Three</div>
+    component: <SettingList />
   }
 ];
 
