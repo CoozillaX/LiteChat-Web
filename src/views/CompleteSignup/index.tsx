@@ -97,7 +97,7 @@ export default function CompleteSignupPage() {
                 variant="contained"
                 color="primary"
                 sx={{ textTransform: "none" }}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/auth")}
               >
                 {t(I18nKeys.resetPassword.login)}
               </Button>

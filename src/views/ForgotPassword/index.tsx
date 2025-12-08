@@ -100,7 +100,7 @@ export default function ForgotPasswordPage() {
                 variant="contained"
                 color="primary"
                 sx={{ textTransform: "none" }}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/auth")}
               >
                 {t(I18nKeys.forgotPassword.login)}
               </Button>
@@ -155,7 +155,7 @@ export default function ForgotPasswordPage() {
                   align="center"
                   sx={{ mt: 2 }}
                 >
-                  <Link to="/" style={{ color: "#1976d2" }}>
+                  <Link to="/auth" style={{ color: "#1976d2" }}>
                     {t(I18nKeys.forgotPassword.login)}
                   </Link>
                 </Typography>

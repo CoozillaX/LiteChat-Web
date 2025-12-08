@@ -47,7 +47,7 @@ export default function LoginPage() {
       setFailureMessage(I18nKeys.login.error.invalidCredentials);
       return;
     }
-    navigate("/chat");
+    navigate("/");
   };
 
   return (
@@ -79,7 +79,7 @@ export default function LoginPage() {
             >
               <Trans
                 i18nKey={failureMessage}
-                components={[<Link to="/" style={{ color: "#1976d2" }} />]}
+                components={[<Link to="/auth" style={{ color: "#1976d2" }} />]}
               />
             </Alert>
           )}
@@ -110,7 +110,7 @@ export default function LoginPage() {
               align="right"
               sx={{ mt: 1 }}
             >
-              <Link to="/forgot-password" style={{ color: "#1976d2" }}>
+              <Link to="/auth/forgot-password" style={{ color: "#1976d2" }}>
                 {t(I18nKeys.login.forgotPassword)}
               </Link>
             </Typography>
@@ -137,7 +137,7 @@ export default function LoginPage() {
               color="secondary"
               startIcon={<Fingerprint />}
               sx={{ textTransform: "none" }}
-              onClick={() => navigate("/chat")}
+              onClick={() => navigate("/")}
             >
               {t(I18nKeys.login.passkey)}
             </Button>
@@ -150,7 +150,7 @@ export default function LoginPage() {
               <Trans
                 i18nKey={I18nKeys.login.signup}
                 components={[
-                  <Link to="/request-signup" style={{ color: "#1976d2" }} />
+                  <Link to="/auth/request-signup" style={{ color: "#1976d2" }} />
                 ]}
               />
             </Typography>

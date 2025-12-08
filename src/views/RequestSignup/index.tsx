@@ -101,7 +101,7 @@ export default function RequestSignupPage() {
                   variant="contained"
                   color="primary"
                   sx={{ textTransform: "none" }}
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/auth")}
                 >
                   {t(I18nKeys.requestSignup.login)}
                 </Button>
@@ -157,7 +157,7 @@ export default function RequestSignupPage() {
                   align="center"
                   sx={{ mt: 2 }}
                 >
-                  <Link to="/" style={{ color: "#1976d2" }}>
+                  <Link to="/auth" style={{ color: "#1976d2" }}>
                     {t(I18nKeys.requestSignup.login)}
                   </Link>
                 </Typography>

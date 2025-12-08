@@ -7,7 +7,7 @@ import ForgotPasswordPage from "@/views/ForgotPassword";
 import ResetPasswordPage from "@/views/ResetPassword";
 
 export const AuthRoutes = (
-  <Route element={<AuthLayout />}>
+  <Route path="auth" element={<AuthLayout />}>
     <Route index element={<LoginPage />} />
     <Route path="request-signup" element={<RequestSignupPage />} />
     <Route path="complete-signup" element={<CompleteSignupPage />} />
