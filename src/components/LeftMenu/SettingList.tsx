@@ -2,21 +2,21 @@ import { Brush, Language } from "@mui/icons-material";
 import {
   Avatar,
   Box,
-  List,
-  ListItemButton,
   ListItemIcon,
   ListItemText,
+  MenuItem,
+  MenuList,
   Typography
 } from "@mui/material";
 
 const options = [
   {
     label: "Appearance",
-    icon: <Brush />
+    icon: <Brush fontSize="small" />
   },
   {
     label: "Language",
-    icon: <Language />
+    icon: <Language fontSize="small" />
   }
 ];
 
@@ -29,18 +29,6 @@ export default function SettingList() {
         height: 1
       }}
     >
-      <Typography
-        sx={{
-          p: 1.6,
-          fontWeight: "bold",
-          borderBottom: 1,
-          borderColor: "divider",
-          textAlign: "center",
-          flexShrink: 0
-        }}
-      >
-        Settings
-      </Typography>
       <Box
         sx={{
           width: 1,
@@ -77,24 +65,14 @@ export default function SettingList() {
         </Box>
 
         {/* Settings Options */}
-        <List>
+        <MenuList>
           {options.map((option, index) => (
-            <ListItemButton key={index} sx={{ borderRadius: 2 }}>
+            <MenuItem key={index} sx={{ borderRadius: 2 }}>
               <ListItemIcon>{option.icon}</ListItemIcon>
-              <ListItemText
-                primary={option.label}
-                slotProps={{
-                  primary: {
-                    fontSize: "0.95rem",
-                    fontWeight: 500,
-                    letterSpacing: 0.2
-                  }
-                }}
-                sx={{ ml: -1 }}
-              />
-            </ListItemButton>
+              <ListItemText primary={option.label} />
+            </MenuItem>
           ))}
-        </List>
+        </MenuList>
       </Box>
     </Box>
   );

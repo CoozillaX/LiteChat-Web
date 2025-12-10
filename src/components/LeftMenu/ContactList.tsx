@@ -1,18 +1,35 @@
-import { createMockContacts } from "@/utils/mock";
+import { useEffect } from "react";
 import {
   Avatar,
   Box,
   Divider,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
-  Typography
+  ListItemText
 } from "@mui/material";
+import { PersonAdd } from "@mui/icons-material";
+import { createMockContacts } from "@/utils/mock";
+import { useLeftMenuContext } from ".";
 
 const mockData = createMockContacts(100);
 
 export default function ContactList() {
+  const { setHeader } = useLeftMenuContext();
+
+  useEffect(() => {
+    // Set header when component mounts
+    setHeader({
+      rightSlot: (
+        <IconButton size="small" color="primary">
+          <PersonAdd />
+        </IconButton>
+      ),
+      showSearch: true,
+    });
+  }, []);
+
   return (
     <Box
       sx={{
@@ -21,18 +38,6 @@ export default function ContactList() {
         height: 1
       }}
     >
-      <Typography
-        sx={{
-          p: 1.6,
-          fontWeight: "bold",
-          borderBottom: 1,
-          borderColor: "divider",
-          textAlign: "center",
-          flexShrink: 0
-        }}
-      >
-        Contacts
-      </Typography>
       <List
         sx={{
           width: 1,

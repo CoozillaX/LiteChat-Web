@@ -31,18 +31,6 @@ export default function ChatList() {
         minHeighgt: 0
       }}
     >
-      <Typography
-        sx={{
-          p: 1.6,
-          fontWeight: "bold",
-          borderBottom: 1,
-          borderColor: "divider",
-          textAlign: "center",
-          flexShrink: 0
-        }}
-      >
-        Chats
-      </Typography>
       <List
         sx={{
           width: 1,
