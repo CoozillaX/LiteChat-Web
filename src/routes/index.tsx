@@ -1,12 +1,12 @@
 import { Routes } from "react-router-dom";
-import { ChatRoutes } from "@/routes/ChatRoutes";
+import { MainRoutes } from "@/routes/MainRoutes";
 import { AuthRoutes } from "@/routes/AuthRoutes";
 
 export function AppRoutes() {
   return (
     <Routes>
       {AuthRoutes}
-      {ChatRoutes}
+      {MainRoutes}
     </Routes>
   );
 }

@@ -22,7 +22,9 @@ export default function MainLayout() {
           width: { xs: 1, md: 300 },
           flexShrink: 0,
           overflow: "hidden",
-          display: showLeft ? "block" : "none"
+          display: showLeft ? "block" : "none",
+          borderRight: "1px solid",
+          borderColor: "divider"
         }}
       >
         <LeftMenu />

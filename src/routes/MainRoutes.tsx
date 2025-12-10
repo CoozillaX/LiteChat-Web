@@ -1,9 +1,9 @@
 import { Route } from "react-router-dom";
 import MainLayout from "@/layout/MainLayout";
-import ChatPage from "@/views/Chat";
+import { SettingRoutes } from "@/routes/SettingRoutes";
 
-export const ChatRoutes = (
+export const MainRoutes = (
   <Route path="/" element={<MainLayout />}>
-    <Route path="/chat" element={<ChatPage />} />
+    { SettingRoutes }
   </Route>
 );
