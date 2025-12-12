@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { I18nKeys } from "@/i18n/keys";
+import { I18nKeys } from "@/i18n";
 import { passwordSchema } from "./password";
 
 export const loginSchema = z.object({

@@ -2,7 +2,7 @@ import { useOutlet } from "react-router-dom";
 import { Box, Chip, useMediaQuery, useTheme } from "@mui/material";
 import LeftMenu from "@/components/LeftMenu";
 
-export default function MainLayout() {
+export default function Index() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const outlet = useOutlet();

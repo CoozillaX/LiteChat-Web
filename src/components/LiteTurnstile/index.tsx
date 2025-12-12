@@ -18,7 +18,7 @@ export interface LiteTurnstileRef {
 
 type LiteTurnstileProps = Omit<TurnstileProps, "sitekey">;
 
-const LiteTurnstile = forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
+export default forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
   (props, ref) => {
     const ctx = useContext(ColorModeContext);
     const { i18n } = useTranslation();
@@ -71,5 +71,3 @@ const LiteTurnstile = forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
     );
   }
 );
-
-export default LiteTurnstile;

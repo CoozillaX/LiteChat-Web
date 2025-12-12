@@ -6,10 +6,9 @@ import {
   BottomNavigationAction
 } from "@mui/material";
 import { Contacts, Chat, Settings } from "@mui/icons-material";
-import ContactList from "./ContactList";
-import ChatList from "./ChatList";
-import SettingList from "./SettingList";
-import { PageHeader, type PageHeaderProps } from "@/components/PageHeader";
+import PageHeader, { type PageHeaderProps } from "@/components/PageHeader";
+import { ContactList, ChatList, SettingList } from "./items";
+import { useLocation } from "react-router-dom";
 
 // Tab items configuration
 const tabItems = [
@@ -56,11 +55,22 @@ export function useLeftMenuContext() {
 
 // Main Left Menu Component
 export default function IconTabs() {
-  const [selected, setSelected] = useState(0);
+  // Get current location
+  const location = useLocation();
+
+  // State for selected tab and header configuration
+  const [selected, setSelected] = useState(() => {
+    const path = location.pathname.toLowerCase();
+    const index = tabItems.findIndex((item) =>
+      path.startsWith(`/${item.label.toLowerCase()}`)
+    );
+    return index >= 0 ? index : 0;
+  });
   const [headerConfig, setHeaderConfig] = useState<PageHeaderProps>(() =>
     getDefaultHeaderConfig(0)
   );
 
+  // Context value for setting header
   const ctxValue: LeftMenuContextType = {
     setHeader: (config) => {
       const mergedConfig = { ...getDefaultHeaderConfig(selected), ...config };
@@ -74,14 +84,15 @@ export default function IconTabs() {
         display: "flex",
         flexDirection: "column",
         height: "100dvh",
-        userSelect: "none"
+        userSelect: "none",
+        width: 1
       }}
     >
       {/* Header */}
       <PageHeader {...headerConfig} />
 
       {/* Content */}
-      <Box sx={{ flex: 1, overflow: "hidden" }}>
+      <Box sx={{ flex: 1, overflow: "hidden", bgcolor: "background.level1" }}>
         <LeftMenuContext.Provider value={ctxValue}>
           {tabItems.map((item, index) => (
             <Fade
@@ -123,6 +134,7 @@ export default function IconTabs() {
       >
         {tabItems.map((item, index) => (
           <BottomNavigationAction
+            key={item.label}
             value={index}
             label={item.label}
             aria-label={item.label}

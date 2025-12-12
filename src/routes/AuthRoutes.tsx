@@ -1,17 +1,17 @@
 import { Route } from "react-router-dom";
 import AuthLayout from "@/layout/AuthLayout";
-import LoginPage from "@/views/Login";
-import RequestSignupPage from "@/views/RequestSignup";
-import CompleteSignupPage from "@/views/CompleteSignup";
-import ForgotPasswordPage from "@/views/ForgotPassword";
-import ResetPasswordPage from "@/views/ResetPassword";
+import Login from "@/views/Login";
+import RequestSignup from "@/views/RequestSignup";
+import CompleteSignup from "@/views/CompleteSignup";
+import ForgotPassword from "@/views/ForgotPassword";
+import ResetPassword from "@/views/ResetPassword";
 
 export const AuthRoutes = (
   <Route path="auth" element={<AuthLayout />}>
-    <Route index element={<LoginPage />} />
-    <Route path="request-signup" element={<RequestSignupPage />} />
-    <Route path="complete-signup" element={<CompleteSignupPage />} />
-    <Route path="forgot-password" element={<ForgotPasswordPage />} />
-    <Route path="reset-password" element={<ResetPasswordPage />} />
+    <Route path="login" element={<Login />} />
+    <Route path="request-signup" element={<RequestSignup />} />
+    <Route path="complete-signup" element={<CompleteSignup />} />
+    <Route path="forgot-password" element={<ForgotPassword />} />
+    <Route path="reset-password" element={<ResetPassword />} />
   </Route>
 );

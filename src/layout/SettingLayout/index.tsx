@@ -1,8 +1,8 @@
-import { PageHeader } from "@/components/PageHeader";
-import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
+import PageHeader from "@/components/PageHeader";
 
-export default function SettingLayout() {
+export default function Index() {
   return (
     <Box
       sx={{
@@ -18,17 +18,18 @@ export default function SettingLayout() {
       {/* Content */}
       <Box
         sx={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-          overflow: "auto",
-          width: 1,
-          maxWidth: 900,
-          px: 10,
-          bgcolor: "background.secondary",
+          overflow: "auto"
         }}
       >
-        <Outlet />
+        <Box
+          sx={{
+            width: 1,
+            maxWidth: 900,
+            mx: "auto"
+          }}
+        >
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );

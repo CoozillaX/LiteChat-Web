@@ -1,4 +1,4 @@
-import i18n from "i18next";
+import i18n, { type Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import enUS from "./locales/en-us";
@@ -7,11 +7,18 @@ import zhCN from "./locales/zh-cn";
 const resources = {
   "en-us": { translation: enUS },
   "zh-cn": { translation: zhCN }
-} as const;
+} as const satisfies Resource;
 
 export type SupportedLang = keyof typeof resources;
 
 export const supportedLanguages = Object.keys(resources) as SupportedLang[];
+
+export function changeLanguage(lng: string) {
+  if (supportedLanguages.includes(lng as SupportedLang)) {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("litechat-lang", lng);
+  }
+}
 
 i18n
   .use(initReactI18next)
@@ -26,3 +33,4 @@ i18n
   });
 
 export default i18n;
+export * from "./keys";

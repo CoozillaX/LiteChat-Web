@@ -1,3 +1,4 @@
+import { Fragment, useEffect, useState } from "react";
 import { createMockChats } from "@/utils/mock";
 import { formatChatTime } from "@/utils/time";
 import {
@@ -10,11 +11,10 @@ import {
   ListItemText,
   Typography
 } from "@mui/material";
-import { useEffect, useState } from "react";
 
-const mockData = createMockChats(100);
+const mockData = createMockChats(10);
 
-export default function ChatList() {
+export function ChatList() {
   // State to trigger re-render every minute for time updates
   const [, setTick] = useState(0);
   useEffect(() => {
@@ -39,8 +39,8 @@ export default function ChatList() {
         }}
       >
         {mockData.map((chat, index) => (
-          <>
-            <ListItem key={chat.id}>
+          <Fragment key={chat.id}>
+            <ListItem>
               <ListItemAvatar>
                 <Avatar
                   alt={`${chat.firstName} ${chat.lastName}`}
@@ -74,7 +74,7 @@ export default function ChatList() {
               />
             </ListItem>
             {index < mockData.length - 1 && <Divider component="li" />}
-          </>
+          </Fragment>
         ))}
       </List>
     </Box>

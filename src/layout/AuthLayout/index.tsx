@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-export default function AuthLayout() {
+export default function Index() {
   return (
     <Box
       sx={{

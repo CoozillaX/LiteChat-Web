@@ -23,7 +23,7 @@ export interface PageHeaderProps {
 }
 
 // Page Header Component
-export function PageHeader({
+export default function Index({
   title,
   leftSlot,
   rightSlot,
@@ -43,7 +43,7 @@ export function PageHeader({
         p: 1.6,
         borderBottom: 1,
         borderColor: "divider",
-        bgcolor: "background.paper",
+        userSelect: "none",
         ...sx
       }}
     >

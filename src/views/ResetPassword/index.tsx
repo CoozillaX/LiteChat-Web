@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { I18nKeys } from "@/i18n/keys";
+import { I18nKeys } from "@/i18n";
 import {
   Alert,
   Button,
@@ -20,7 +20,7 @@ import {
   type ResetPasswordSchemaValues
 } from "@/schemas/auth/resetPassword";
 
-export default function ResetPasswordPage() {
+export default function Index() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 

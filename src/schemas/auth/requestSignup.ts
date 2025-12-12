@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { I18nKeys } from "@/i18n/keys";
+import { I18nKeys } from "@/i18n";
 
 export const requestSignupSchema = z.object({
   email: z.email(I18nKeys.auth.error.invalidEmail)

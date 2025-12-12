@@ -3,7 +3,7 @@ import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import type { TextFieldProps } from "@mui/material/TextField";
 
-export default function PasswordField(props: TextFieldProps) {
+export default function Index(props: TextFieldProps) {
   const [show, setShow] = useState(false);
   const { slotProps, ...rest } = props;
   return (

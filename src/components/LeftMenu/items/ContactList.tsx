@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { PersonAdd } from "@mui/icons-material";
 import { createMockContacts } from "@/utils/mock";
-import { useLeftMenuContext } from ".";
+import { useLeftMenuContext } from "..";
 
-const mockData = createMockContacts(100);
+const mockData = createMockContacts(10);
 
-export default function ContactList() {
+export function ContactList() {
   const { setHeader } = useLeftMenuContext();
 
   useEffect(() => {
@@ -46,8 +46,8 @@ export default function ContactList() {
         }}
       >
         {mockData.map((contact, index) => (
-          <>
-            <ListItem key={contact.id}>
+          <Fragment key={contact.id}>
+            <ListItem>
               <ListItemAvatar>
                 <Avatar
                   alt={`${contact.firstName} ${contact.lastName}`}
@@ -60,7 +60,7 @@ export default function ContactList() {
               />
             </ListItem>
             {index < mockData.length - 1 && <Divider component="li" />}
-          </>
+          </Fragment>
         ))}
       </List>
     </Box>

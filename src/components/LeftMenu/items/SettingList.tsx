@@ -1,11 +1,12 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { Brush, ChevronRight, Language } from "@mui/icons-material";
 import {
   Avatar,
   Box,
+  List,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
-  MenuItem,
-  MenuList,
   Typography
 } from "@mui/material";
 
@@ -13,16 +14,21 @@ const optionGroups = [
   [
     {
       label: "Appearance",
-      icon: <Brush fontSize="small" />
+      icon: <Brush fontSize="small" />,
+      path: "/settings/appearance"
     },
     {
       label: "Language",
-      icon: <Language fontSize="small" />
+      icon: <Language fontSize="small" />,
+      path: "/settings/language"
     }
   ]
 ];
 
-export default function SettingList() {
+export function SettingList() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -31,16 +37,19 @@ export default function SettingList() {
         flexDirection: "column"
       }}
     >
-      <Box sx={{ p: 1, flex: 1, borderRadius: 2, overflow: "auto" }}>
-        <MenuList
+      <Box sx={{ p: 1, flex: 1, borderRadius: 3, overflow: "auto" }}>
+        <List
           sx={{
-            "& .MuiMenuItem-root:hover": {
-              backgroundColor: "transparent"
+            "& .MuiListItemButton-root": {
+              "&:hover": {
+                bgcolor: "transparent"
+              }
             }
           }}
         >
           {/* Profile Section */}
-          <MenuItem
+          <ListItemButton
+            key={"profile"}
             sx={{
               p: 2,
               borderRadius: 2,
@@ -53,7 +62,6 @@ export default function SettingList() {
                 sx={{ width: 48, height: 48, bgcolor: "white" }}
               />
             </ListItemIcon>
-
             <ListItemText
               primary={
                 <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
@@ -67,19 +75,25 @@ export default function SettingList() {
               }
               sx={{ my: 0 }}
             />
-
             <ChevronRight fontSize="small" sx={{ color: "text.secondary" }} />
-          </MenuItem>
+          </ListItemButton>
 
           {/* Settings Options */}
           {optionGroups.map((group, groupIndex) => (
             <Box
               key={groupIndex}
-              sx={{ mb: groupIndex < optionGroups.length - 1 ? 2 : 0 }} // 组间距
+              sx={{ mb: groupIndex < optionGroups.length - 1 ? 2 : 0 }}
             >
               {group.map((option) => (
-                <MenuItem key={option.label} sx={{ py: 1 }}>
-                  <ListItemIcon>{option.icon}</ListItemIcon>
+                <ListItemButton
+                  key={option.label}
+                  sx={{ py: 1, borderRadius: 3 }}
+                  selected={location.pathname === option.path}
+                  onClick={() => navigate(option.path)}
+                >
+                  <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
+                    {option.icon}
+                  </ListItemIcon>
                   <ListItemText
                     primary={option.label}
                     slotProps={{
@@ -92,11 +106,11 @@ export default function SettingList() {
                     fontSize="small"
                     sx={{ color: "text.secondary" }}
                   />
-                </MenuItem>
+                </ListItemButton>
               ))}
             </Box>
           ))}
-        </MenuList>
+        </List>
       </Box>
     </Box>
   );

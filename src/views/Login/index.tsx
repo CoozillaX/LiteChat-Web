@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { I18nKeys } from "@/i18n/keys";
+import { I18nKeys } from "@/i18n";
 import { Fingerprint } from "@mui/icons-material";
 import {
   Alert,
@@ -22,7 +22,7 @@ import {
 import PasswordField from "@/components/PasswordField";
 import { loginSchema, type LoginSchemaValues } from "@/schemas/auth/login";
 
-export default function LoginPage() {
+export default function Index() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

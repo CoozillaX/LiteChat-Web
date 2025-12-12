@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { I18nKeys } from "@/i18n/keys";
+import { I18nKeys } from "@/i18n";
 import {
   Alert,
   Button,
@@ -23,7 +23,7 @@ import LiteTurnstile, {
   type LiteTurnstileRef
 } from "@/components/LiteTurnstile";
 
-export default function RequestSignupPage() {
+export default function Index() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
