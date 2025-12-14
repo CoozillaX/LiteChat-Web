@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Typography,
@@ -6,16 +7,16 @@ import {
   type Theme
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { I18nKeys } from "@/i18n";
 import type { ChangeEvent, ReactNode } from "react";
 
 // Page Header Component Props
 export interface PageHeaderProps {
-  title: ReactNode;
+  titleI18nKey?: string;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
 
   showSearch?: boolean;
-  searchPlaceholder?: string;
   searchValue?: string;
   onSearchChange?: (value: string) => void;
 
@@ -24,15 +25,16 @@ export interface PageHeaderProps {
 
 // Page Header Component
 export default function Index({
-  title,
+  titleI18nKey,
   leftSlot,
   rightSlot,
   showSearch = false,
-  searchPlaceholder = "Search",
   searchValue,
   onSearchChange,
   sx
 }: PageHeaderProps) {
+  const { t } = useTranslation();
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onSearchChange?.(event.target.value);
   };
@@ -77,7 +79,7 @@ export default function Index({
           }}
         >
           <Typography variant="subtitle1" fontWeight="bold">
-            {title}
+            {t(titleI18nKey ?? "")}
           </Typography>
         </Box>
 
@@ -104,7 +106,7 @@ export default function Index({
             alignItems: "center",
             bgcolor: "action.hover",
             borderRadius: 2,
-            px: 1.5,
+            px: 1.5
           }}
         >
           <SearchIcon
@@ -112,7 +114,7 @@ export default function Index({
             sx={{ mr: 1, color: "text.secondary" }}
           />
           <InputBase
-            placeholder={searchPlaceholder}
+            placeholder={t(I18nKeys.contacts.searchPlaceholder)}
             value={searchValue}
             onChange={handleChange}
             sx={{

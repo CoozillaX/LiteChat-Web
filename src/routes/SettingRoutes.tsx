@@ -2,6 +2,7 @@ import { Navigate, Route } from "react-router-dom";
 import Appearance from "@/views/SettingsMenu/Appearance";
 import Language from "@/views/SettingsMenu/Language";
 import SettingLayout from "@/layout/SettingLayout";
+import { I18nKeys } from "@/i18n";
 
 export const SettingRoutes = (
   <Route path="settings" element={<SettingLayout />}>
@@ -9,12 +10,12 @@ export const SettingRoutes = (
     <Route
       path="appearance"
       element={<Appearance />}
-      handle={{ title: "Appearance" }}
+      handle={{ titleI18nKey: I18nKeys.settings.appearance.title }}
     />
     <Route
       path="language"
       element={<Language />}
-      handle={{ title: "Language" }}
+      handle={{ titleI18nKey: I18nKeys.settings.language.title }}
     />
     <Route path="*" element={<Navigate to=".." replace />} />
   </Route>

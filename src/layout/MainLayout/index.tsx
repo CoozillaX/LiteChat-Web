@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import { useOutlet } from "react-router-dom";
 import { Box, Chip, useMediaQuery, useTheme } from "@mui/material";
 import SideMenu from "@/views/SideMenu";
 import { SideMenuProvider } from "@/contexts";
 import { useRouteData } from "@/hooks/useRouteData";
+import { I18nKeys } from "@/i18n";
 
 export default function Index() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const outlet = useOutlet();
@@ -63,7 +66,7 @@ export default function Index() {
               userSelect: "none"
             }}
           >
-            <Chip label="Please select a chat or option from the left menu." />
+            <Chip label={t(I18nKeys.layout.main.emptyState)} />
           </Box>
         )}
       </Box>

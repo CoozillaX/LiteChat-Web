@@ -3,6 +3,9 @@ import { I18nKeys } from "../keys";
 export default {
   [I18nKeys.languageName]: "中文",
 
+  // ===================== LAYOUT =====================
+  [I18nKeys.layout.main.emptyState]: "选择一个选项来开始使用 LiteChat",
+
   // ===================== AUTH =====================
   [I18nKeys.auth.error.invalidEmail]: "请输入有效的邮箱地址。",
   [I18nKeys.auth.error.shortPassword]: "密码长度至少为 8 个字符。",
@@ -71,5 +74,20 @@ export default {
   [I18nKeys.completeSignup.error.firstNameRequired]: "请输入您的名字。",
   [I18nKeys.completeSignup.error.passwordsDoNotMatch]: "两次输入的密码不匹配。",
   [I18nKeys.completeSignup.success.signupComplete]:
-    "您已完成注册！欢迎使用 LiteChat！"
+    "您已完成注册！欢迎使用 LiteChat！",
+
+  // ===================== CONTACTS =====================
+  [I18nKeys.contacts.title]: "联系人",
+  [I18nKeys.contacts.searchPlaceholder]: "搜索",
+
+  // ===================== CHATS =====================
+  [I18nKeys.chats.title]: "聊天",
+  [I18nKeys.chats.searchPlaceholder]: "搜索",
+
+  // ===================== SETTINGS =====================
+  [I18nKeys.settings.title]: "设置",
+  [I18nKeys.settings.appearance.title]: "外观",
+  [I18nKeys.settings.appearance.darkMode]: "深色模式",
+  [I18nKeys.settings.language.title]: "语言",
+  [I18nKeys.settings.language.selectLanguage]: "切换语言"
 };

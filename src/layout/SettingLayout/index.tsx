@@ -6,7 +6,7 @@ import { useRouteData } from "@/hooks/useRouteData";
 
 export default function Index() {
   const navigate = useNavigate();
-  const title = useRouteData<string>("title") || "Settings";
+  const titleI18nKey = useRouteData<string>("titleI18nKey");
 
   return (
     <Box
@@ -19,7 +19,7 @@ export default function Index() {
     >
       {/* Header */}
       <PageHeader
-        title={title}
+        titleI18nKey={titleI18nKey}
         leftSlot={
           <IconButton size="small" onClick={() => navigate(".")}>
             <ArrowBack />

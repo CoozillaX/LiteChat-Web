@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Brush, ChevronRight, Language } from "@mui/icons-material";
 import {
@@ -9,16 +10,17 @@ import {
   ListItemText,
   Typography
 } from "@mui/material";
+import { I18nKeys } from "@/i18n";
 
 const optionGroups = [
   [
     {
-      label: "Appearance",
+      titleI18nKey: I18nKeys.settings.appearance.title,
       icon: <Brush fontSize="small" />,
       path: "/settings/appearance"
     },
     {
-      label: "Language",
+      titleI18nKey: I18nKeys.settings.language.title,
       icon: <Language fontSize="small" />,
       path: "/settings/language"
     }
@@ -26,6 +28,7 @@ const optionGroups = [
 ];
 
 export function SettingList() {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -87,7 +90,7 @@ export function SettingList() {
             >
               {group.map((option) => (
                 <ListItemButton
-                  key={option.label}
+                  key={option.titleI18nKey}
                   disableRipple
                   sx={{ py: 1, borderRadius: 3 }}
                   selected={location.pathname === option.path}
@@ -97,7 +100,7 @@ export function SettingList() {
                     {option.icon}
                   </ListItemIcon>
                   <ListItemText
-                    primary={option.label}
+                    primary={t(option.titleI18nKey)}
                     slotProps={{
                       primary: {
                         fontSize: "0.90rem"

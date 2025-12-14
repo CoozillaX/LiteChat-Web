@@ -1,6 +1,12 @@
 export const I18nKeys = {
   languageName: "languageName",
 
+  layout: {
+    main: {
+      emptyState: "layout.main.emptyState"
+    }
+  },
+
   auth: {
     error: {
       invalidEmail: "auth.error.invalidEmail",
@@ -87,6 +93,28 @@ export const I18nKeys = {
     },
     success: {
       signupComplete: "completeSignup.success.signupComplete"
+    }
+  },
+
+  contacts: {
+    title: "contacts.title",
+    searchPlaceholder: "contacts.searchPlaceholder"
+  },
+
+  chats: {
+    title: "chats.title",
+    searchPlaceholder: "chats.searchPlaceholder"
+  },
+
+  settings: {
+    title: "settings.title",
+    appearance: {
+      title: "settings.appearance.title",
+      darkMode: "settings.appearance.darkMode"
+    },
+    language: {
+      title: "settings.language.title",
+      selectLanguage: "settings.language.selectLanguage"
     }
   }
 } as const;

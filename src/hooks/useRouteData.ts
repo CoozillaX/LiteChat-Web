@@ -1,7 +1,7 @@
 import { useMatches } from "react-router-dom";
 
 interface RouteHandle {
-  title?: string;
+  titleI18nKey?: string;
   isEmptyPage?: boolean;
 }
 

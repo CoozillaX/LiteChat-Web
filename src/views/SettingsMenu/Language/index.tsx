@@ -26,7 +26,7 @@ export default function Index() {
         items: [
           {
             type: SettingMenuItemType.Select,
-            label: "Language",
+            label: t(I18nKeys.settings.language.selectLanguage),
             icon: <Translate fontSize="small" />,
             value: i18n.language,
             options: options,

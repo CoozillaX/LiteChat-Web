@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Fade,
@@ -6,44 +7,40 @@ import {
   BottomNavigationAction
 } from "@mui/material";
 import { Contacts, Chat, Settings } from "@mui/icons-material";
-import PageHeader, { type PageHeaderProps } from "@/components/PageHeader";
+import PageHeader from "@/components/PageHeader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSideMenuContext } from "@/contexts/SideMenuContext";
 import { ContactList } from "./items/ContactList";
 import { ChatList } from "./items/ChatList";
 import { SettingList } from "./items/SettingList";
+import { I18nKeys } from "@/i18n";
 
 // Tab items configuration
 const tabItems = [
   {
-    label: "Contacts",
+    titleI18nKey: I18nKeys.contacts.title,
     path: "/contacts",
     icon: <Contacts />,
     component: <ContactList />
   },
   {
-    label: "Chats",
+    titleI18nKey: I18nKeys.chats.title,
     path: "/chats",
     icon: <Chat />,
     component: <ChatList />
   },
   {
-    label: "Settings",
+    titleI18nKey: I18nKeys.settings.title,
     path: "/settings",
     icon: <Settings />,
     component: <SettingList />
   }
 ];
 
-// Default header configuration based on selected tab
-function getDefaultHeaderConfig(index: number): PageHeaderProps {
-  return {
-    title: tabItems[index].label
-  };
-}
-
 // Main Left Menu Component
 export default function Index() {
+  const { t } = useTranslation();
+
   // Get current location
   const location = useLocation();
   const navigate = useNavigate();
@@ -62,7 +59,9 @@ export default function Index() {
 
   // Initialize header props on mount
   useEffect(() => {
-    setHeaderProps(getDefaultHeaderConfig(selected));
+    setHeaderProps({
+      titleI18nKey: t(tabItems[selected].titleI18nKey)
+    });
   }, [selected]);
 
   return (
@@ -119,10 +118,10 @@ export default function Index() {
       >
         {tabItems.map((item, index) => (
           <BottomNavigationAction
-            key={item.label}
+            key={item.titleI18nKey}
             value={index}
-            label={item.label}
-            aria-label={item.label}
+            label={t(item.titleI18nKey)}
+            aria-label={t(item.titleI18nKey)}
             icon={item.icon}
           />
         ))}

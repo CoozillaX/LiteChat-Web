@@ -12,6 +12,7 @@ import {
 import { PersonAdd } from "@mui/icons-material";
 import { createMockContacts } from "@/utils/mock";
 import { useSideMenuContext } from "@/contexts";
+import { I18nKeys } from "@/i18n";
 
 const mockData = createMockContacts(10);  
 
@@ -21,7 +22,7 @@ export function ContactList() {
   useEffect(() => {
     // Set header when component mounts
     setHeaderProps({
-      title: "Contacts",
+      titleI18nKey: I18nKeys.contacts.title,
       rightSlot: (
         <IconButton size="small" color="primary">
           <PersonAdd />

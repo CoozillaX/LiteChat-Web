@@ -3,6 +3,9 @@ import { I18nKeys } from "../keys";
 export default {
   [I18nKeys.languageName]: "English",
 
+  // ===================== LAYOUT =====================
+  [I18nKeys.layout.main.emptyState]: "Select an option to get started with LiteChat",
+
   // ===================== AUTH =====================
   [I18nKeys.auth.error.invalidEmail]: "Please enter a valid email address.",
   [I18nKeys.auth.error.shortPassword]:
@@ -85,5 +88,20 @@ export default {
   [I18nKeys.completeSignup.error.passwordsDoNotMatch]:
     "The passwords entered do not match.",
   [I18nKeys.completeSignup.success.signupComplete]:
-    "You have successfully completed sign-up! Welcome to LiteChat!"
+    "You have successfully completed sign-up! Welcome to LiteChat!",
+
+  // ===================== CONTACTS =====================
+  [I18nKeys.contacts.title]: "Contacts",
+  [I18nKeys.contacts.searchPlaceholder]: "Search",
+
+  // ===================== CHATS =====================
+  [I18nKeys.chats.title]: "Chats",
+  [I18nKeys.chats.searchPlaceholder]: "Search",
+
+  // ===================== SETTINGS =====================
+  [I18nKeys.settings.title]: "Settings",
+  [I18nKeys.settings.appearance.title]: "Appearance",
+  [I18nKeys.settings.appearance.darkMode]: "Dark Mode",
+  [I18nKeys.settings.language.title]: "Language",
+  [I18nKeys.settings.language.selectLanguage]: "Language"
 };
