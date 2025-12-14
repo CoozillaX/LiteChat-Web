@@ -1,8 +1,13 @@
-import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Outlet, useNavigate } from "react-router-dom";
+import { Box, IconButton } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import PageHeader from "@/components/PageHeader";
+import { useRouteData } from "@/hooks/useRouteData";
 
 export default function Index() {
+  const navigate = useNavigate();
+  const title = useRouteData<string>("title") || "Settings";
+
   return (
     <Box
       sx={{
@@ -13,7 +18,14 @@ export default function Index() {
       }}
     >
       {/* Header */}
-      <PageHeader title="Appearance" />
+      <PageHeader
+        title={title}
+        leftSlot={
+          <IconButton size="small" onClick={() => navigate(".")}>
+            <ArrowBack />
+          </IconButton>
+        }
+      />
 
       {/* Content */}
       <Box

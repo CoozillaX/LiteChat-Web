@@ -1,14 +1,15 @@
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import { Brush } from "@mui/icons-material";
 import SettingMenu, {
   SettingMenuItemType,
   type SettingMenuGroup
 } from "@/components/SettingMenu";
-import { ColorModeContext } from "@/views/App";
+import { useThemeMode } from "@/contexts";
 
 export default function Index() {
-  const ctx = useContext(ColorModeContext);
+  const { themeMode, toggleThemeMode } = useThemeMode();
 
+  // Define appearance option groups
   const optionGroups: SettingMenuGroup[] = useMemo(
     () => [
       {
@@ -17,15 +18,15 @@ export default function Index() {
             type: SettingMenuItemType.Switch,
             label: "Dark Mode",
             icon: <Brush fontSize="small" />,
-            value: ctx?.mode === "dark",
+            value: themeMode === "dark",
             onChange: () => {
-              ctx?.toggleColorMode();
+              toggleThemeMode();
             }
           }
         ]
       }
     ],
-    [ctx]
+    [themeMode]
   );
 
   return <SettingMenu groups={optionGroups} />;

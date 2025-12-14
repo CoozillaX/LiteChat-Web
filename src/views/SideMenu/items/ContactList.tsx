@@ -11,22 +11,23 @@ import {
 } from "@mui/material";
 import { PersonAdd } from "@mui/icons-material";
 import { createMockContacts } from "@/utils/mock";
-import { useLeftMenuContext } from "..";
+import { useSideMenuContext } from "@/contexts";
 
-const mockData = createMockContacts(10);
+const mockData = createMockContacts(10);  
 
 export function ContactList() {
-  const { setHeader } = useLeftMenuContext();
+  const { setHeaderProps } = useSideMenuContext();
 
   useEffect(() => {
     // Set header when component mounts
-    setHeader({
+    setHeaderProps({
+      title: "Contacts",
       rightSlot: (
         <IconButton size="small" color="primary">
           <PersonAdd />
         </IconButton>
       ),
-      showSearch: true,
+      showSearch: true
     });
   }, []);
 

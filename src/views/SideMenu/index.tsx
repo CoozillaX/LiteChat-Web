@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Fade,
@@ -7,23 +7,29 @@ import {
 } from "@mui/material";
 import { Contacts, Chat, Settings } from "@mui/icons-material";
 import PageHeader, { type PageHeaderProps } from "@/components/PageHeader";
-import { ContactList, ChatList, SettingList } from "./items";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSideMenuContext } from "@/contexts/SideMenuContext";
+import { ContactList } from "./items/ContactList";
+import { ChatList } from "./items/ChatList";
+import { SettingList } from "./items/SettingList";
 
 // Tab items configuration
 const tabItems = [
   {
     label: "Contacts",
+    path: "/contacts",
     icon: <Contacts />,
     component: <ContactList />
   },
   {
     label: "Chats",
+    path: "/chats",
     icon: <Chat />,
     component: <ChatList />
   },
   {
     label: "Settings",
+    path: "/settings",
     icon: <Settings />,
     component: <SettingList />
   }
@@ -36,47 +42,28 @@ function getDefaultHeaderConfig(index: number): PageHeaderProps {
   };
 }
 
-// Left menu header context
-type LeftMenuContextType = {
-  setHeader: (config: Partial<PageHeaderProps>) => void;
-};
-
-const LeftMenuContext = createContext<LeftMenuContextType | null>(null);
-
-export function useLeftMenuContext() {
-  const context = useContext(LeftMenuContext);
-  if (!context) {
-    throw new Error(
-      "useLeftMenuContext must be used within a LeftMenuContext.Provider"
-    );
-  }
-  return context;
-}
-
 // Main Left Menu Component
-export default function IconTabs() {
+export default function Index() {
   // Get current location
   const location = useLocation();
+  const navigate = useNavigate();
 
   // State for selected tab and header configuration
   const [selected, setSelected] = useState(() => {
     const path = location.pathname.toLowerCase();
     const index = tabItems.findIndex((item) =>
-      path.startsWith(`/${item.label.toLowerCase()}`)
+      path.startsWith(item.path.toLowerCase())
     );
     return index >= 0 ? index : 0;
   });
-  const [headerConfig, setHeaderConfig] = useState<PageHeaderProps>(() =>
-    getDefaultHeaderConfig(0)
-  );
 
-  // Context value for setting header
-  const ctxValue: LeftMenuContextType = {
-    setHeader: (config) => {
-      const mergedConfig = { ...getDefaultHeaderConfig(selected), ...config };
-      setHeaderConfig(mergedConfig);
-    }
-  };
+  // Side menu context
+  const { headerProps, setHeaderProps } = useSideMenuContext();
+
+  // Initialize header props on mount
+  useEffect(() => {
+    setHeaderProps(getDefaultHeaderConfig(selected));
+  }, [selected]);
 
   return (
     <Box
@@ -89,25 +76,23 @@ export default function IconTabs() {
       }}
     >
       {/* Header */}
-      <PageHeader {...headerConfig} />
+      <PageHeader {...headerProps} />
 
       {/* Content */}
       <Box sx={{ flex: 1, overflow: "hidden", bgcolor: "background.level1" }}>
-        <LeftMenuContext.Provider value={ctxValue}>
-          {tabItems.map((item, index) => (
-            <Fade
-              key={index}
-              in={selected === index}
-              timeout={200}
-              mountOnEnter
-              unmountOnExit
-            >
-              <Box hidden={selected !== index} sx={{ height: 1 }}>
-                {item.component}
-              </Box>
-            </Fade>
-          ))}
-        </LeftMenuContext.Provider>
+        {tabItems.map((item, index) => (
+          <Fade
+            key={index}
+            in={selected === index}
+            timeout={200}
+            mountOnEnter
+            unmountOnExit
+          >
+            <Box hidden={selected !== index} sx={{ height: 1 }}>
+              {item.component}
+            </Box>
+          </Fade>
+        ))}
       </Box>
 
       {/* Bottom Navigation */}
@@ -116,7 +101,7 @@ export default function IconTabs() {
         onChange={(_, value: number) => {
           if (value === selected) return;
           setSelected(value);
-          setHeaderConfig(getDefaultHeaderConfig(value));
+          navigate(tabItems[value].path);
         }}
         sx={{
           borderTop: 1,

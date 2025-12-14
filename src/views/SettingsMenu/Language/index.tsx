@@ -10,6 +10,7 @@ import SettingMenu, {
 export default function Index() {
   const { i18n, t } = useTranslation();
 
+  // Set the menu title on mount
   const options = useMemo(
     () =>
       supportedLanguages.map((lng) => ({

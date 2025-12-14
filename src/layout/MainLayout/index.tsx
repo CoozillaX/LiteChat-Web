@@ -1,14 +1,18 @@
 import { useOutlet } from "react-router-dom";
 import { Box, Chip, useMediaQuery, useTheme } from "@mui/material";
-import LeftMenu from "@/components/LeftMenu";
+import SideMenu from "@/views/SideMenu";
+import { SideMenuProvider } from "@/contexts";
+import { useRouteData } from "@/hooks/useRouteData";
 
 export default function Index() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const outlet = useOutlet();
 
-  const showLeft = !isMobile || !outlet;
-  const showRight = !isMobile || !!outlet;
+  const isMarkedAsEmpty = useRouteData<boolean>("isEmptyPage");
+  const isContentVisible = !!outlet && !isMarkedAsEmpty;
+  const showLeft = !isMobile || !isContentVisible;
+  const showRight = !isMobile || isContentVisible;
 
   return (
     <Box
@@ -27,7 +31,9 @@ export default function Index() {
           borderColor: "divider"
         }}
       >
-        <LeftMenu />
+        <SideMenuProvider>
+          <SideMenu />
+        </SideMenuProvider>
       </Box>
 
       <Box
@@ -45,7 +51,9 @@ export default function Index() {
           `
         }}
       >
-        {outlet ?? (
+        {isContentVisible ? (
+          outlet
+        ) : (
           <Box
             sx={{
               position: "absolute",

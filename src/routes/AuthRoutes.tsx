@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import AuthLayout from "@/layout/AuthLayout";
 import Login from "@/views/Login";
 import RequestSignup from "@/views/RequestSignup";
@@ -8,10 +8,12 @@ import ResetPassword from "@/views/ResetPassword";
 
 export const AuthRoutes = (
   <Route path="auth" element={<AuthLayout />}>
+    <Route index element={<Navigate to="login" replace />} />
     <Route path="login" element={<Login />} />
     <Route path="request-signup" element={<RequestSignup />} />
     <Route path="complete-signup" element={<CompleteSignup />} />
     <Route path="forgot-password" element={<ForgotPassword />} />
     <Route path="reset-password" element={<ResetPassword />} />
+    <Route path="*" element={<Navigate to=".." replace />} />
   </Route>
 );

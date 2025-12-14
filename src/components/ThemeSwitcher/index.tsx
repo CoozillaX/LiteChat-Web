@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { ColorModeContext } from "@/views/App";
 import { styled } from "@mui/material/styles";
 import { Switch } from "@mui/material";
+import { useThemeMode } from "@/contexts";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -60,11 +59,9 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function ThemeSwitcher() {
-  const ctx = useContext(ColorModeContext);
-  if (!ctx) return null;
+  const { themeMode, toggleThemeMode } = useThemeMode();
 
-  const { mode, toggleColorMode } = ctx;
   return (
-    <MaterialUISwitch checked={mode === "dark"} onChange={toggleColorMode} />
+    <MaterialUISwitch checked={themeMode === "dark"} onChange={toggleThemeMode} />
   );
 }

@@ -1,16 +1,10 @@
-import {
-  forwardRef,
-  useContext,
-  useImperativeHandle,
-  useRef,
-  useState
-} from "react";
-import { ColorModeContext } from "@/views/App";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Turnstile from "react-turnstile";
 import type { TurnstileProps, BoundTurnstileObject } from "react-turnstile";
 import type { SupportedLang } from "@/i18n";
 import { Box, Skeleton } from "@mui/material";
+import { useThemeMode } from "@/contexts";
 
 export interface LiteTurnstileRef {
   reset: () => void;
@@ -20,7 +14,7 @@ type LiteTurnstileProps = Omit<TurnstileProps, "sitekey">;
 
 export default forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
   (props, ref) => {
-    const ctx = useContext(ColorModeContext);
+    const { themeMode } = useThemeMode();
     const { i18n } = useTranslation();
     const boundRef = useRef<BoundTurnstileObject | null>(null);
 
@@ -55,7 +49,7 @@ export default forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
 
         <Turnstile
           sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
-          theme={ctx?.mode === "dark" ? "dark" : "light"}
+          theme={themeMode === "dark" ? "dark" : "light"}
           language={i18n.language as SupportedLang}
           size="flexible"
           appearance="always"

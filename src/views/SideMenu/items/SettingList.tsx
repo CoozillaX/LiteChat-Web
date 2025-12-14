@@ -50,6 +50,7 @@ export function SettingList() {
           {/* Profile Section */}
           <ListItemButton
             key={"profile"}
+            disableRipple
             sx={{
               p: 2,
               borderRadius: 2,
@@ -87,6 +88,7 @@ export function SettingList() {
               {group.map((option) => (
                 <ListItemButton
                   key={option.label}
+                  disableRipple
                   sx={{ py: 1, borderRadius: 3 }}
                   selected={location.pathname === option.path}
                   onClick={() => navigate(option.path)}
