@@ -86,6 +86,7 @@ export default {
 
   // ===================== SETTINGS =====================
   [I18nKeys.settings.title]: "设置",
+  [I18nKeys.settings.profile.title]: "个人资料",
   [I18nKeys.settings.appearance.title]: "外观",
   [I18nKeys.settings.appearance.darkMode]: "深色模式",
   [I18nKeys.settings.language.title]: "语言",

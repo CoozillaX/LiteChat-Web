@@ -100,6 +100,7 @@ export default {
 
   // ===================== SETTINGS =====================
   [I18nKeys.settings.title]: "Settings",
+  [I18nKeys.settings.profile.title]: "Profile",
   [I18nKeys.settings.appearance.title]: "Appearance",
   [I18nKeys.settings.appearance.darkMode]: "Dark Mode",
   [I18nKeys.settings.language.title]: "Language",

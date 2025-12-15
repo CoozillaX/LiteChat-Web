@@ -21,6 +21,7 @@ export interface CustomMenuItem extends BaseMenuItem {
 export interface LinkMenuItem extends BaseMenuItem {
   type: typeof SettingMenuItemType.Link;
   path: string;
+  component?: JSX.Element;
 }
 
 export interface SwitchMenuItem extends BaseMenuItem {

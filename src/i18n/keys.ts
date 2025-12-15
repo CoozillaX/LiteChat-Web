@@ -108,6 +108,9 @@ export const I18nKeys = {
 
   settings: {
     title: "settings.title",
+    profile: {
+      title: "settings.profile.title"
+    },
     appearance: {
       title: "settings.appearance.title",
       darkMode: "settings.appearance.darkMode"

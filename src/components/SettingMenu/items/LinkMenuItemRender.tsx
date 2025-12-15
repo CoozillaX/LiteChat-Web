@@ -3,7 +3,12 @@ import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { ChevronRight } from "@mui/icons-material";
 import type { LinkMenuItem } from "../types";
 
-export function LinkMenuItemRender({ label, icon, path }: LinkMenuItem) {
+export function LinkMenuItemRender({
+  label,
+  icon,
+  path,
+  component
+}: LinkMenuItem) {
   const navigate = useNavigate();
 
   return (
@@ -25,21 +30,25 @@ export function LinkMenuItemRender({ label, icon, path }: LinkMenuItem) {
         }
       }}
     >
-      <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
-        {icon}
-      </ListItemIcon>
-      <ListItemText
-        primary={label}
-        slotProps={{
-          primary: {
-            fontSize: "0.90rem"
-          }
-        }}
-      />
-      <ChevronRight
-        fontSize="small"
-        sx={{ color: "text.secondary", opacity: 0.5 }}
-      />
+      {component ?? (
+        <>
+          <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
+            {icon}
+          </ListItemIcon>
+          <ListItemText
+            primary={label}
+            slotProps={{
+              primary: {
+                fontSize: "0.90rem"
+              }
+            }}
+          />
+          <ChevronRight
+            fontSize="small"
+            sx={{ color: "text.secondary", opacity: 0.5 }}
+          />
+        </>
+      )}
     </ListItemButton>
   );
 }

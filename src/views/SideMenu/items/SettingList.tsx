@@ -11,16 +11,51 @@ import {
   Typography
 } from "@mui/material";
 import { I18nKeys } from "@/i18n";
+import {
+  SettingMenuItemType,
+  type LinkMenuItem
+} from "@/components/SettingMenu";
 
-const optionGroups = [
+const optionGroups: LinkMenuItem[][] = [
   [
     {
-      titleI18nKey: I18nKeys.settings.appearance.title,
+      type: SettingMenuItemType.Link,
+      path: "/settings/profile",
+      component: (
+        <>
+          <ListItemIcon sx={{ minWidth: 0, mr: 2 }}>
+            <Avatar
+              src="https://api.dicebear.com/9.x/identicon/svg?seed=Coo"
+              sx={{ width: 48, height: 48, bgcolor: "white" }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
+                CoozillaX
+              </Typography>
+            }
+            secondary={
+              <Typography variant="caption" color="text.secondary">
+                Meow!
+              </Typography>
+            }
+            sx={{ my: 0 }}
+          />
+        </>
+      )
+    }
+  ],
+  [
+    {
+      type: SettingMenuItemType.Link,
+      label: I18nKeys.settings.appearance.title,
       icon: <Brush fontSize="small" />,
       path: "/settings/appearance"
     },
     {
-      titleI18nKey: I18nKeys.settings.language.title,
+      type: SettingMenuItemType.Link,
+      label: I18nKeys.settings.language.title,
       icon: <Language fontSize="small" />,
       path: "/settings/language"
     }
@@ -50,39 +85,6 @@ export function SettingList() {
             }
           }}
         >
-          {/* Profile Section */}
-          <ListItemButton
-            key={"profile"}
-            disableRipple
-            sx={{
-              p: 2,
-              borderRadius: 2,
-              mb: 1
-            }}
-          >
-            <ListItemIcon sx={{ minWidth: 0, mr: 2 }}>
-              <Avatar
-                src="https://api.dicebear.com/9.x/identicon/svg?seed=Coo"
-                sx={{ width: 48, height: 48, bgcolor: "white" }}
-              />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
-                  CoozillaX
-                </Typography>
-              }
-              secondary={
-                <Typography variant="caption" color="text.secondary">
-                  Meow!
-                </Typography>
-              }
-              sx={{ my: 0 }}
-            />
-            <ChevronRight fontSize="small" sx={{ color: "text.secondary" }} />
-          </ListItemButton>
-
-          {/* Settings Options */}
           {optionGroups.map((group, groupIndex) => (
             <Box
               key={groupIndex}
@@ -90,23 +92,29 @@ export function SettingList() {
             >
               {group.map((option) => (
                 <ListItemButton
-                  key={option.titleI18nKey}
+                  key={option.path}
                   disableRipple
                   sx={{ py: 1, borderRadius: 3 }}
                   selected={location.pathname === option.path}
                   onClick={() => navigate(option.path)}
                 >
-                  <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
-                    {option.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t(option.titleI18nKey)}
-                    slotProps={{
-                      primary: {
-                        fontSize: "0.90rem"
-                      }
-                    }}
-                  />
+                  {option.component ?? (
+                    <>
+                      <ListItemIcon
+                        sx={{ minWidth: 42, color: "text.primary" }}
+                      >
+                        {option.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={option.label ? t(option.label) : ""}
+                        slotProps={{
+                          primary: {
+                            fontSize: "0.90rem"
+                          }
+                        }}
+                      />
+                    </>
+                  )}
                   <ChevronRight
                     fontSize="small"
                     sx={{ color: "text.secondary" }}
