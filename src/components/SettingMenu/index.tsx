@@ -3,7 +3,8 @@ import {
   CustomMenuItemRender,
   LinkMenuItemRender,
   SwitchMenuItemRender,
-  SelectMenuItemRender
+  SelectMenuItemRender,
+  InputMenuItemRender
 } from "./items";
 import { SettingMenuItemType, type SettingMenuGroup } from "./types";
 
@@ -15,7 +16,8 @@ export default function Index({ groups }: SettingMenuProps) {
   return (
     <Box
       sx={{
-        height: 1
+        height: 1,
+        userSelect: "none"
       }}
     >
       <Box sx={{ px: 4, py: 2 }}>
@@ -59,16 +61,18 @@ export default function Index({ groups }: SettingMenuProps) {
                   bgcolor: "background.level2"
                 }}
               >
-                {group.items.map((item) => {
+                {group.items.map((item, index) => {
                   switch (item.type) {
                     case SettingMenuItemType.Custom:
-                      return <CustomMenuItemRender key={item.label} {...item} />;
+                      return <CustomMenuItemRender key={index} {...item} />;
                     case SettingMenuItemType.Link:
-                      return <LinkMenuItemRender key={item.label} {...item} />;
+                      return <LinkMenuItemRender key={index} {...item} />;
                     case SettingMenuItemType.Switch:
-                      return <SwitchMenuItemRender key={item.label} {...item} />;
+                      return <SwitchMenuItemRender key={index} {...item} />;
                     case SettingMenuItemType.Select:
-                      return <SelectMenuItemRender key={item.label} {...item} />;
+                      return <SelectMenuItemRender key={index} {...item} />;
+                    case SettingMenuItemType.Input:
+                      return <InputMenuItemRender key={index} {...item} />;
                     default:
                       return null;
                   }

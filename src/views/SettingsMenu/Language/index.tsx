@@ -21,7 +21,7 @@ export default function Index() {
   );
 
   const optionGroups: SettingMenuGroup[] = useMemo(
-    () => [
+    (): SettingMenuGroup[] => [
       {
         items: [
           {

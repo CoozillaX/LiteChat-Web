@@ -6,7 +6,7 @@ import CompleteSignup from "@/views/CompleteSignup";
 import ForgotPassword from "@/views/ForgotPassword";
 import ResetPassword from "@/views/ResetPassword";
 
-export const AuthRoutes = (
+const AuthRoutes = (
   <Route path="auth" element={<AuthLayout />}>
     <Route index element={<Navigate to="login" replace />} />
     <Route path="login" element={<Login />} />
@@ -14,6 +14,7 @@ export const AuthRoutes = (
     <Route path="complete-signup" element={<CompleteSignup />} />
     <Route path="forgot-password" element={<ForgotPassword />} />
     <Route path="reset-password" element={<ResetPassword />} />
-    <Route path="*" element={<Navigate to=".." replace />} />
   </Route>
 );
+
+export default AuthRoutes;

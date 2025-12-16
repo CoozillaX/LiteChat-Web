@@ -45,7 +45,6 @@ export default function Index({
         p: 1.6,
         borderBottom: 1,
         borderColor: "divider",
-        userSelect: "none",
         ...sx
       }}
     >

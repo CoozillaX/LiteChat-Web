@@ -7,26 +7,30 @@ import {
 } from "react";
 import type { PageHeaderProps } from "@/components/PageHeader";
 
-// Side menu header context
-type SideMenuContextType = {
+// Setting menu header context
+type SettingMenuContextType = {
   headerProps: PageHeaderProps;
   setHeaderProps: (config: SetStateAction<PageHeaderProps>) => void;
 };
 
-const SideMenuContext = createContext<SideMenuContextType | null>(null);
+const SettingMenuContext = createContext<SettingMenuContextType | null>(null);
 
-export function useSideMenuContext() {
-  const ctx = useContext(SideMenuContext);
+export function useSettingMenuContext() {
+  const ctx = useContext(SettingMenuContext);
   if (!ctx) {
     throw new Error(
-      "useSideMenuContext must be used within a SideMenuContext.Provider"
+      "useSettingMenuContext must be used within a SettingMenuContext.Provider"
     );
   }
   return ctx;
 }
 
 // Provider component to wrap the app with side menu context
-export function SideMenuProvider({ children }: { children: React.ReactNode }) {
+export function SettingMenuProvider({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   const [headerProps, setHeaderProps] = useState<PageHeaderProps>({
     titleI18nKey: ""
   });
@@ -40,8 +44,8 @@ export function SideMenuProvider({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <SideMenuContext.Provider value={contextValue}>
+    <SettingMenuContext.Provider value={contextValue}>
       {children}
-    </SideMenuContext.Provider>
+    </SettingMenuContext.Provider>
   );
 }

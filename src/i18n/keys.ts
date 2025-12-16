@@ -109,7 +109,21 @@ export const I18nKeys = {
   settings: {
     title: "settings.title",
     profile: {
-      title: "settings.profile.title"
+      title: "settings.profile.title",
+      avatar: {
+        title: "settings.profile.avatar"
+      },
+      personalInfo: {
+        firstNameTitle: "settings.profile.personalInfo.firstNameTitle",
+        firstNamePlaceholder: "settings.profile.personalInfo.fistNamePlaceholder",
+        lastNameTitle: "settings.profile.personalInfo.lastNameTitle",
+        lastNamePlaceholder: "settings.profile.personalInfo.lastNamePlaceholder"
+      },
+      bio: {
+        title: "settings.profile.bio.title",
+        placeholder: "settings.profile.bio.placeholder"
+      },
+      logout: "settings.profile.logout"
     },
     appearance: {
       title: "settings.appearance.title",

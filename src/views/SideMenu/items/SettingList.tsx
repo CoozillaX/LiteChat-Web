@@ -23,7 +23,7 @@ const optionGroups: LinkMenuItem[][] = [
       path: "/settings/profile",
       component: (
         <>
-          <ListItemIcon sx={{ minWidth: 0, mr: 2 }}>
+          <ListItemIcon sx={{ minWidth: 0, mr: 2, py: 1 }}>
             <Avatar
               src="https://api.dicebear.com/9.x/identicon/svg?seed=Coo"
               sx={{ width: 48, height: 48, bgcolor: "white" }}

@@ -21,7 +21,8 @@ export default function Index() {
     <Box
       sx={{
         display: "flex",
-        height: 1
+        height: 1,
+        userSelect: "none"
       }}
     >
       <Box
@@ -62,8 +63,7 @@ export default function Index() {
               position: "absolute",
               top: "50%",
               left: "50%",
-              transform: "translate(-50%, -50%)",
-              userSelect: "none"
+              transform: "translate(-50%, -50%)"
             }}
           >
             <Chip label={t(I18nKeys.layout.main.emptyState)} />

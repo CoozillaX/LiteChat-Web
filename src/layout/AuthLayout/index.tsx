@@ -19,7 +19,8 @@ export default function Index() {
           rgba(255,255,255,0.50) 100%
           )
         `,
-        backdropFilter: "blur(40px)"
+        backdropFilter: "blur(40px)",
+        userSelect: "none"
       }}
     >
       <Box

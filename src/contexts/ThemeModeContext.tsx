@@ -49,10 +49,7 @@ function useThemeModeState() {
   const [themeMode, setThemeMode] = useState<PaletteMode>(getInitialMode);
 
   useEffect(() => {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    if (!stored) {
-      setThemeMode(prefersDarkMode ? "dark" : "light");
-    }
+    setThemeMode(prefersDarkMode ? "dark" : "light");
   }, [prefersDarkMode]);
 
   const toggleThemeMode = useCallback(() => {

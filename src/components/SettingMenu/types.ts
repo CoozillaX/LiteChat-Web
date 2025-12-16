@@ -5,7 +5,9 @@ export const SettingMenuItemType = {
   Custom: "custom",
   Link: "link",
   Switch: "switch",
-  Select: "select"
+  Select: "select",
+  Input: "input",
+  Button: "button"
 } as const;
 
 interface BaseMenuItem {
@@ -37,12 +39,26 @@ export interface SelectMenuItem extends BaseMenuItem {
   onChange: (value: string) => void;
 }
 
+export interface InputMenuItem extends BaseMenuItem {
+  type: typeof SettingMenuItemType.Input;
+  value: string;
+  placeholder?: string;
+  onChange: (value: string) => void;
+}
+
+export interface ButtonMenuItem extends BaseMenuItem {
+  type: typeof SettingMenuItemType.Button;
+  onClick: () => void;
+}
+
 // Union type for all menu items
 export type SettingMenuItem =
   | CustomMenuItem
   | LinkMenuItem
   | SwitchMenuItem
-  | SelectMenuItem;
+  | SelectMenuItem
+  | InputMenuItem
+  | ButtonMenuItem;
 
 // Setting menu group type
 export interface SettingMenuGroup {

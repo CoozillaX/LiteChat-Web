@@ -14,7 +14,7 @@ export default function Index() {
 
   // Define appearance option groups
   const optionGroups: SettingMenuGroup[] = useMemo(
-    () => [
+    (): SettingMenuGroup[] => [
       {
         items: [
           {

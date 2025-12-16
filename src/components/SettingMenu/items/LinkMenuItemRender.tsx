@@ -13,6 +13,7 @@ export function LinkMenuItemRender({
 
   return (
     <ListItemButton
+      disableRipple
       onClick={() => navigate(path)}
       sx={{
         py: 1.3,
@@ -32,9 +33,11 @@ export function LinkMenuItemRender({
     >
       {component ?? (
         <>
-          <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
-            {icon}
-          </ListItemIcon>
+          {icon && (
+            <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
+              {icon}
+            </ListItemIcon>
+          )}
           <ListItemText
             primary={label}
             slotProps={{

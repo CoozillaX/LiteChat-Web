@@ -65,8 +65,7 @@ export default function Index() {
         sx={{
           borderRadius: 3,
           boxShadow: 4,
-          py: 2,
-          userSelect: "none"
+          py: 2
         }}
       >
         <CardHeader

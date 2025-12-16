@@ -60,7 +60,7 @@ export default function Index() {
   // Initialize header props on mount
   useEffect(() => {
     setHeaderProps({
-      titleI18nKey: t(tabItems[selected].titleI18nKey)
+      titleI18nKey: tabItems[selected].titleI18nKey
     });
   }, [selected]);
 
@@ -70,7 +70,6 @@ export default function Index() {
         display: "flex",
         flexDirection: "column",
         height: "100dvh",
-        userSelect: "none",
         width: 1
       }}
     >
