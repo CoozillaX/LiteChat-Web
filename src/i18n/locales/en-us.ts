@@ -4,7 +4,8 @@ export default {
   [I18nKeys.languageName]: "English",
 
   // ===================== LAYOUT =====================
-  [I18nKeys.layout.main.emptyState]: "Select an option to get started with LiteChat",
+  [I18nKeys.layout.main.emptyState]:
+    "Select an option to get started with LiteChat",
 
   // ===================== AUTH =====================
   [I18nKeys.auth.error.invalidEmail]: "Please enter a valid email address.",
@@ -85,6 +86,10 @@ export default {
   [I18nKeys.completeSignup.error.invalidLink]:
     "The sign-up link is invalid or has expired. Please request a new link to continue.",
   [I18nKeys.completeSignup.error.firstNameRequired]: "First name is required.",
+  [I18nKeys.completeSignup.error.firstNameMaxLengthExceeded]:
+    "First name must be at most 20 characters.",
+  [I18nKeys.completeSignup.error.lastNameMaxLengthExceeded]:
+    "Last name must be at most 20 characters.",
   [I18nKeys.completeSignup.error.passwordsDoNotMatch]:
     "The passwords entered do not match.",
   [I18nKeys.completeSignup.success.signupComplete]:
@@ -103,9 +108,11 @@ export default {
   [I18nKeys.settings.profile.title]: "Profile",
   [I18nKeys.settings.profile.avatar.title]: "Edit Avatar",
   [I18nKeys.settings.profile.personalInfo.firstNameTitle]: "First Name",
-  [I18nKeys.settings.profile.personalInfo.firstNamePlaceholder]: "Enter your first name",
+  [I18nKeys.settings.profile.personalInfo.firstNamePlaceholder]:
+    "Enter your first name",
   [I18nKeys.settings.profile.personalInfo.lastNameTitle]: "Last Name",
-  [I18nKeys.settings.profile.personalInfo.lastNamePlaceholder]: "Enter your last name",
+  [I18nKeys.settings.profile.personalInfo.lastNamePlaceholder]:
+    "Enter your last name",
   [I18nKeys.settings.profile.bio.title]: "Bio",
   [I18nKeys.settings.profile.bio.placeholder]: "Tell us about yourself",
   [I18nKeys.settings.profile.logout]: "Log Out",

@@ -37,17 +37,37 @@ export function SettingList() {
                 <Avatar
                   src={user?.avatarUrl ?? undefined}
                   alt="User Avatar"
-                  sx={{ width: 48, height: 48, bgcolor: user?.avatarUrl ? "white" : undefined }}
+                  sx={{
+                    width: 48,
+                    height: 48,
+                    bgcolor: user?.avatarUrl ? "white" : undefined
+                  }}
                 />
               </ListItemIcon>
               <ListItemText
                 primary={
-                  <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
-                    {`${user?.firstName} ${user?.lastName}`}
+                  <Typography
+                    fontWeight="bold"
+                    sx={{
+                      fontSize: "1rem",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap"
+                    }}
+                  >
+                    {`${user?.firstName ?? ""} ${user?.lastName ?? ""}`}
                   </Typography>
                 }
                 secondary={
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography
+                    color="text.secondary"
+                    sx={{
+                      fontSize: "0.75rem",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap"
+                    }}
+                  >
                     {user?.bio ?? ""}
                   </Typography>
                 }

@@ -4,9 +4,8 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "@/state/store";
 import App from "@/views/App";
-import "./index.scss";
-import "@/i18n";
 import i18n from "@/i18n";
+import "./index.scss";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

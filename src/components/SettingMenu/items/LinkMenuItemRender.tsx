@@ -7,6 +7,7 @@ export function LinkMenuItemRender({
   label,
   icon,
   path,
+  beforeNavigate,
   component
 }: LinkMenuItem) {
   const navigate = useNavigate();
@@ -14,7 +15,10 @@ export function LinkMenuItemRender({
   return (
     <ListItemButton
       disableRipple
-      onClick={() => navigate(path)}
+      onClick={() => {
+        beforeNavigate?.();
+        navigate(path);
+      }}
       sx={{
         py: 1.3,
         position: "relative",

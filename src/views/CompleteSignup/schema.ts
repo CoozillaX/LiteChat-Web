@@ -7,8 +7,12 @@ export const completeSignupSchema = z
     firstName: z
       .string()
       .trim()
-      .min(1, I18nKeys.completeSignup.error.firstNameRequired),
-    lastName: z.string().trim(),
+      .min(1, I18nKeys.completeSignup.error.firstNameRequired)
+      .max(20, I18nKeys.completeSignup.error.firstNameMaxLengthExceeded),
+    lastName: z
+      .string()
+      .trim()
+      .max(20, I18nKeys.completeSignup.error.lastNameMaxLengthExceeded),
     password: passwordSchema,
     confirmPassword: z.string()
   })

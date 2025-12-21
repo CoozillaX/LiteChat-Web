@@ -72,6 +72,10 @@ export default {
   [I18nKeys.completeSignup.error.invalidLink]:
     "注册链接无效或已过期，请尝试获取新的链接以继续操作。",
   [I18nKeys.completeSignup.error.firstNameRequired]: "请输入您的名字。",
+  [I18nKeys.completeSignup.error.firstNameMaxLengthExceeded]:
+    "名字最多为 20 个字符。",
+  [I18nKeys.completeSignup.error.lastNameMaxLengthExceeded]:
+    "姓氏最多为 20 个字符。",
   [I18nKeys.completeSignup.error.passwordsDoNotMatch]: "两次输入的密码不匹配。",
   [I18nKeys.completeSignup.success.signupComplete]:
     "您已完成注册！欢迎使用 LiteChat！",

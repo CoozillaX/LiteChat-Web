@@ -89,6 +89,8 @@ export const I18nKeys = {
     error: {
       invalidLink: "completeSignup.error.invalidLink",
       firstNameRequired: "completeSignup.error.firstNameRequired",
+      firstNameMaxLengthExceeded: "completeSignup.error.firstNameMaxLengthExceeded",
+      lastNameMaxLengthExceeded: "completeSignup.error.lastNameMaxLengthExceeded",
       passwordsDoNotMatch: "completeSignup.error.passwordsDoNotMatch"
     },
     success: {
