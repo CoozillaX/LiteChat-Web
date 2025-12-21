@@ -15,13 +15,13 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import {
-  forgotPasswordSchema,
-  type ForgotPasswordSchemaValues
-} from "@/schemas/auth/forgotPassword";
 import LiteTurnstile, {
   type LiteTurnstileRef
 } from "@/components/LiteTurnstile";
+import {
+  forgotPasswordSchema,
+  type ForgotPasswordSchemaValues
+} from "./schema";
 
 export default function Index() {
   const { t } = useTranslation();

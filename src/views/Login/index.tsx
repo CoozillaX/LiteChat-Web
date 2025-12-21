@@ -20,7 +20,9 @@ import {
   Typography
 } from "@mui/material";
 import PasswordField from "@/components/PasswordField";
-import { loginSchema, type LoginSchemaValues } from "@/schemas/auth/login";
+import { loginSchema, type LoginSchemaValues } from "./schema";
+import { store } from "@/state/store";
+import { setUser } from "@/views/App/slice";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -47,6 +49,28 @@ export default function Index() {
       setFailureMessage(I18nKeys.login.error.invalidCredentials);
       return;
     }
+    store.dispatch(
+      setUser({
+        firstName: "Password",
+        lastName: "User",
+        email: data.email,
+        bio: "Just a test user",
+        avatarUrl: null
+      })
+    );
+    navigate("/");
+  };
+
+  const onPasskeyLogin = () => {
+    store.dispatch(
+      setUser({
+        firstName: "Passkey",
+        lastName: "User",
+        email: "test1@aaa.com",
+        bio: "Just a test user",
+        avatarUrl: null
+      })
+    );
     navigate("/");
   };
 
@@ -136,7 +160,7 @@ export default function Index() {
               color="secondary"
               startIcon={<Fingerprint />}
               sx={{ textTransform: "none" }}
-              onClick={() => navigate("/")}
+              onClick={onPasskeyLogin}
             >
               {t(I18nKeys.login.passkey)}
             </Button>
@@ -149,7 +173,10 @@ export default function Index() {
               <Trans
                 i18nKey={I18nKeys.login.signup}
                 components={[
-                  <Link to="/auth/request-signup" style={{ color: "#1976d2" }} />
+                  <Link
+                    to="/auth/request-signup"
+                    style={{ color: "#1976d2" }}
+                  />
                 ]}
               />
             </Typography>

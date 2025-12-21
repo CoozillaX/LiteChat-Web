@@ -18,7 +18,7 @@ import PasswordField from "@/components/PasswordField";
 import {
   resetPasswordSchema,
   type ResetPasswordSchemaValues
-} from "@/schemas/auth/resetPassword";
+} from "./schema";
 
 export default function Index() {
   const { t } = useTranslation();

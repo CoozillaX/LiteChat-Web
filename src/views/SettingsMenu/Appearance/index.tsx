@@ -5,12 +5,14 @@ import SettingMenu, {
   SettingMenuItemType,
   type SettingMenuGroup
 } from "@/components/SettingMenu";
-import { useThemeMode } from "@/contexts";
 import { I18nKeys } from "@/i18n";
+import { useStore } from "@/state/hooks";
+import { toggleDarkMode } from "@/views/App/slice";
+import { store } from "@/state/store";
 
 export default function Index() {
   const { t } = useTranslation();
-  const { themeMode, toggleThemeMode } = useThemeMode();
+  const darkMode = useStore(({ app }) => app.darkMode);
 
   // Define appearance option groups
   const optionGroups: SettingMenuGroup[] = useMemo(
@@ -21,15 +23,15 @@ export default function Index() {
             type: SettingMenuItemType.Switch,
             label: t(I18nKeys.settings.appearance.darkMode),
             icon: <Brush fontSize="small" />,
-            value: themeMode === "dark",
+            value: darkMode,
             onChange: () => {
-              toggleThemeMode();
+              store.dispatch(toggleDarkMode());
             }
           }
         ]
       }
     ],
-    [themeMode]
+    [darkMode]
   );
 
   return <SettingMenu groups={optionGroups} />;

@@ -19,7 +19,7 @@ import PasswordField from "@/components/PasswordField";
 import {
   completeSignupSchema,
   type CompleteSignupSchemaValues
-} from "@/schemas/auth/completeSignup";
+} from "./schema";
 
 export default function Index() {
   const { t } = useTranslation();

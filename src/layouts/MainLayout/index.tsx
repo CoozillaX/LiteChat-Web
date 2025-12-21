@@ -3,7 +3,7 @@ import { useOutlet } from "react-router-dom";
 import { Box, Chip, useMediaQuery, useTheme } from "@mui/material";
 import SideMenu from "@/views/SideMenu";
 import { SideMenuProvider } from "@/contexts";
-import { useRouteData } from "@/hooks/useRouteData";
+import { useRouteData } from "@/routes/hooks";
 import { I18nKeys } from "@/i18n";
 
 export default function Index() {

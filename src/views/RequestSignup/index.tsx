@@ -15,13 +15,13 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import {
-  requestSignupSchema,
-  type RequestSignupSchemaValues
-} from "@/schemas/auth/requestSignup";
 import LiteTurnstile, {
   type LiteTurnstileRef
 } from "@/components/LiteTurnstile";
+import {
+  requestSignupSchema,
+  type RequestSignupSchemaValues
+} from "./schema";
 
 export default function Index() {
   const { t } = useTranslation();

@@ -1,6 +1,8 @@
 import { styled } from "@mui/material/styles";
 import { Switch } from "@mui/material";
-import { useThemeMode } from "@/contexts";
+import { useStore } from "@/state/hooks";
+import { store } from "@/state/store";
+import { toggleDarkMode } from "@/views/App/slice";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -59,9 +61,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function ThemeSwitcher() {
-  const { themeMode, toggleThemeMode } = useThemeMode();
+  const darkMode = useStore(({ app }) => app.darkMode);
 
   return (
-    <MaterialUISwitch checked={themeMode === "dark"} onChange={toggleThemeMode} />
+    <MaterialUISwitch
+      checked={darkMode}
+      onChange={() => store.dispatch(toggleDarkMode())}
+    />
   );
 }

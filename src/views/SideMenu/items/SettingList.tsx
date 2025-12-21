@@ -15,57 +15,65 @@ import {
   SettingMenuItemType,
   type LinkMenuItem
 } from "@/components/SettingMenu";
-
-const optionGroups: LinkMenuItem[][] = [
-  [
-    {
-      type: SettingMenuItemType.Link,
-      path: "/settings/profile",
-      component: (
-        <>
-          <ListItemIcon sx={{ minWidth: 0, mr: 2, py: 1 }}>
-            <Avatar
-              src="https://api.dicebear.com/9.x/identicon/svg?seed=Coo"
-              sx={{ width: 48, height: 48, bgcolor: "white" }}
-            />
-          </ListItemIcon>
-          <ListItemText
-            primary={
-              <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
-                CoozillaX
-              </Typography>
-            }
-            secondary={
-              <Typography variant="caption" color="text.secondary">
-                Meow!
-              </Typography>
-            }
-            sx={{ my: 0 }}
-          />
-        </>
-      )
-    }
-  ],
-  [
-    {
-      type: SettingMenuItemType.Link,
-      label: I18nKeys.settings.appearance.title,
-      icon: <Brush fontSize="small" />,
-      path: "/settings/appearance"
-    },
-    {
-      type: SettingMenuItemType.Link,
-      label: I18nKeys.settings.language.title,
-      icon: <Language fontSize="small" />,
-      path: "/settings/language"
-    }
-  ]
-];
+import { useMemo } from "react";
+import { useStore } from "@/state/hooks";
 
 export function SettingList() {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const user = useStore(({ app }) => app.user);
+
+  const optionGroups: LinkMenuItem[][] = useMemo(
+    (): LinkMenuItem[][] => [
+      [
+        {
+          type: SettingMenuItemType.Link,
+          path: "/settings/profile",
+          component: (
+            <>
+              <ListItemIcon sx={{ minWidth: 0, mr: 2, py: 1 }}>
+                <Avatar
+                  src={user?.avatarUrl ?? undefined}
+                  alt="User Avatar"
+                  sx={{ width: 48, height: 48, bgcolor: user?.avatarUrl ? "white" : undefined }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography fontWeight="bold" sx={{ fontSize: "1rem" }}>
+                    {`${user?.firstName} ${user?.lastName}`}
+                  </Typography>
+                }
+                secondary={
+                  <Typography variant="caption" color="text.secondary">
+                    {user?.bio ?? ""}
+                  </Typography>
+                }
+                sx={{ my: 0 }}
+              />
+            </>
+          )
+        }
+      ],
+      [
+        {
+          type: SettingMenuItemType.Link,
+          label: I18nKeys.settings.appearance.title,
+          icon: <Brush fontSize="small" />,
+          path: "/settings/appearance"
+        },
+        {
+          type: SettingMenuItemType.Link,
+          label: I18nKeys.settings.language.title,
+          icon: <Language fontSize="small" />,
+          path: "/settings/language"
+        }
+      ]
+    ],
+    [user]
+  );
 
   return (
     <Box

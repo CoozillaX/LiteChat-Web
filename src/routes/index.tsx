@@ -4,7 +4,7 @@ import {
   Navigate,
   Route
 } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout";
+import MainLayout from "@/layouts/MainLayout";
 import AuthRoutes from "./auth";
 import ContactRoutes from "./contacts";
 import ChatRoutes from "./chats";

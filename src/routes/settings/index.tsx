@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import SettingLayout from "@/layout/SettingLayout";
+import SettingLayout from "@/layouts/SettingLayout";
 import { SettingMenuProvider } from "@/contexts/SettingMenuContext";
 import ProfileRoute from "./profile";
 import AppearanceRoute from "./appearance";

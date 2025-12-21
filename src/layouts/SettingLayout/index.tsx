@@ -2,7 +2,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Box, IconButton } from "@mui/material";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import PageHeader from "@/components/PageHeader";
-import { useRouteData } from "@/hooks/useRouteData";
+import { useRouteData } from "@/routes/hooks";
 import { useSettingMenuContext } from "@/contexts";
 import { useEffect } from "react";
 
