@@ -8,17 +8,15 @@ localForage.config({
   storeName: "redux_store"
 });
 
-const persistConfig = {
-  key: "root",
-  storage: localForage,
-  whitelist: ["app"]
-};
-
 const rootReducer = combineReducers({
   app: appReducer
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer({
+  key: "root",
+  storage: localForage,
+  whitelist: ["app"]
+}, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,

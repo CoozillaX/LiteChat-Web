@@ -117,7 +117,9 @@ export default {
   [I18nKeys.settings.profile.bio.placeholder]: "Tell us about yourself",
   [I18nKeys.settings.profile.logout]: "Log Out",
   [I18nKeys.settings.appearance.title]: "Appearance",
-  [I18nKeys.settings.appearance.darkMode]: "Dark Mode",
+  [I18nKeys.settings.appearance.theme.title]: "Theme",
+  [I18nKeys.settings.appearance.theme.darkMode]: "Dark Mode",
+  [I18nKeys.settings.appearance.theme.autoDarkMode]: "Match System",
   [I18nKeys.settings.language.title]: "Language",
   [I18nKeys.settings.language.selectLanguage]: "Language"
 };

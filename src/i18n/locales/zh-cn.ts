@@ -102,7 +102,9 @@ export default {
   [I18nKeys.settings.profile.bio.placeholder]: "介绍一下你自己",
   [I18nKeys.settings.profile.logout]: "退出账号",
   [I18nKeys.settings.appearance.title]: "外观",
-  [I18nKeys.settings.appearance.darkMode]: "深色模式",
+  [I18nKeys.settings.appearance.theme.title]: "主题",
+  [I18nKeys.settings.appearance.theme.darkMode]: "深色模式",
+  [I18nKeys.settings.appearance.theme.autoDarkMode]: "跟随系统",
   [I18nKeys.settings.language.title]: "语言",
   [I18nKeys.settings.language.selectLanguage]: "切换语言"
 };

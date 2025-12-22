@@ -14,7 +14,7 @@ type LiteTurnstileProps = Omit<TurnstileProps, "sitekey">;
 
 export default forwardRef<LiteTurnstileRef, LiteTurnstileProps>(
   (props, ref) => {
-    const darkMode = useStore(({ app }) => app.darkMode);
+    const darkMode = useStore(({ app }) => app.darkMode.enabled);
     const { i18n } = useTranslation();
     const boundRef = useRef<BoundTurnstileObject | null>(null);
 

@@ -31,9 +31,11 @@ export function SwitchMenuItemRender({
         }
       }}
     >
-      <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
-        {icon}
-      </ListItemIcon>
+      {icon && (
+        <ListItemIcon sx={{ minWidth: 42, color: "text.primary" }}>
+          {icon}
+        </ListItemIcon>
+      )}
       <ListItemText
         primary={label}
         slotProps={{

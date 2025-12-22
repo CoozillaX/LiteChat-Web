@@ -6,8 +6,8 @@ import {
   Box,
   Divider,
   List,
-  ListItem,
   ListItemAvatar,
+  ListItemButton,
   ListItemText,
   Typography
 } from "@mui/material";
@@ -35,12 +35,13 @@ export function ChatList() {
         sx={{
           width: 1,
           flex: 1,
-          overflow: "auto"
+          overflow: "auto",
+          pt: 0
         }}
       >
-        {mockData.map((chat, index) => (
+        {mockData.map((chat) => (
           <Fragment key={chat.id}>
-            <ListItem>
+            <ListItemButton>
               <ListItemAvatar>
                 <Avatar
                   alt={`${chat.firstName} ${chat.lastName}`}
@@ -72,8 +73,8 @@ export function ChatList() {
                     : chat.lastMessage
                 }
               />
-            </ListItem>
-            {index < mockData.length - 1 && <Divider component="li" />}
+            </ListItemButton>
+            <Divider component="div" />
           </Fragment>
         ))}
       </List>

@@ -5,8 +5,8 @@ import {
   Divider,
   IconButton,
   List,
-  ListItem,
   ListItemAvatar,
+  ListItemButton,
   ListItemText
 } from "@mui/material";
 import { PersonAdd } from "@mui/icons-material";
@@ -43,12 +43,13 @@ export function ContactList() {
         sx={{
           width: 1,
           flex: 1,
-          overflow: "auto"
+          overflow: "auto",
+          pt: 0
         }}
       >
-        {mockData.map((contact, index) => (
+        {mockData.map((contact) => (
           <Fragment key={contact.id}>
-            <ListItem>
+            <ListItemButton>
               <ListItemAvatar>
                 <Avatar
                   alt={`${contact.firstName} ${contact.lastName}`}
@@ -59,8 +60,8 @@ export function ContactList() {
               <ListItemText
                 primary={`${contact.firstName} ${contact.lastName}`}
               />
-            </ListItem>
-            {index < mockData.length - 1 && <Divider component="li" />}
+            </ListItemButton>
+            <Divider component="div" />
           </Fragment>
         ))}
       </List>

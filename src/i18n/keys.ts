@@ -129,7 +129,11 @@ export const I18nKeys = {
     },
     appearance: {
       title: "settings.appearance.title",
-      darkMode: "settings.appearance.darkMode"
+      theme: {
+        title: "settings.appearance.theme",
+        darkMode: "settings.appearance.theme.darkMode",
+        autoDarkMode: "settings.appearance.theme.autoDarkMode"
+      }
     },
     language: {
       title: "settings.language.title",
