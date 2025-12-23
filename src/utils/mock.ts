@@ -108,10 +108,7 @@ function createMockContacts(length: number) {
     contacts.push({
       id: randomId(),
       firstName,
-      lastName,
-      avatar: `https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(
-        firstName + " " + lastName
-      )}`
+      lastName
     });
   }
   return contacts;
@@ -126,9 +123,6 @@ function createMockChats(length: number) {
       id: randomId(),
       firstName,
       lastName,
-      avatar: `https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(
-        firstName + " " + lastName
-      )}`,
       lastMessage: randomItem(messages),
       timestamp: new Date(Date.now() - i * i * 5 * 60 * 10000)
     });

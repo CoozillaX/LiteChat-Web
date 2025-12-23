@@ -152,6 +152,24 @@ export function ChatInput() {
         segments: [{ type: "text", data: { text: message } }]
       })
     );
+    store.dispatch(
+      addMessage({
+        id: Date.now() + 1,
+        senderId: 2,
+        timestamp: Date.now(),
+        type: "message",
+        segments: [{ type: "text", data: { text: `Echo1: ${message}` } }]
+      })
+    );
+    store.dispatch(
+      addMessage({
+        id: Date.now() + 2,
+        senderId: 2,
+        timestamp: Date.now(),
+        type: "message",
+        segments: [{ type: "text", data: { text: `Echo2: ${message}` } }]
+      })
+    );
     setMessage("");
   };
 

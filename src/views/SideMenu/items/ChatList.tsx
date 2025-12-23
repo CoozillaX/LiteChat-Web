@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from "react";
 import { createMockChats } from "@/utils/mock";
 import { formatChatTime } from "@/utils/time";
 import {
-  Avatar,
   Box,
   Divider,
   List,
@@ -11,6 +10,7 @@ import {
   ListItemText,
   Typography
 } from "@mui/material";
+import LetterAvatar from "@/components/LetterAvatar";
 
 const mockData = createMockChats(10);
 
@@ -43,11 +43,7 @@ export function ChatList() {
           <Fragment key={chat.id}>
             <ListItemButton>
               <ListItemAvatar>
-                <Avatar
-                  alt={`${chat.firstName} ${chat.lastName}`}
-                  src={chat.avatar}
-                  sx={{ bgcolor: "white" }}
-                />
+                <LetterAvatar name={`${chat.firstName} ${chat.lastName}`} />
               </ListItemAvatar>
               <ListItemText
                 primary={

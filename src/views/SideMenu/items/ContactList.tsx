@@ -1,6 +1,5 @@
 import { Fragment, useEffect } from "react";
 import {
-  Avatar,
   Box,
   Divider,
   IconButton,
@@ -12,6 +11,7 @@ import {
 import { PersonAdd } from "@mui/icons-material";
 import { createMockContacts } from "@/utils/mock";
 import { useSideMenuContext } from "@/contexts";
+import LetterAvatar from "@/components/LetterAvatar";
 
 const mockData = createMockContacts(10);
 
@@ -51,10 +51,8 @@ export function ContactList() {
           <Fragment key={contact.id}>
             <ListItemButton>
               <ListItemAvatar>
-                <Avatar
-                  alt={`${contact.firstName} ${contact.lastName}`}
-                  src={contact.avatar}
-                  sx={{ bgcolor: "white" }}
+                <LetterAvatar
+                  name={`${contact.firstName} ${contact.lastName}`}
                 />
               </ListItemAvatar>
               <ListItemText

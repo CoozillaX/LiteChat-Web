@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Brush, ChevronRight, Language } from "@mui/icons-material";
 import {
-  Avatar,
   Box,
   List,
   ListItemButton,
@@ -17,6 +16,7 @@ import {
 } from "@/components/SettingMenu";
 import { useMemo } from "react";
 import { useStore } from "@/state/hooks";
+import LetterAvatar from "@/components/LetterAvatar";
 
 export function SettingList() {
   const { t } = useTranslation();
@@ -34,13 +34,12 @@ export function SettingList() {
           component: (
             <>
               <ListItemIcon sx={{ minWidth: 0, mr: 2, py: 1 }}>
-                <Avatar
+                <LetterAvatar
+                  name={`${user?.firstName ?? ""} ${user?.lastName ?? ""}`}
                   src={user?.avatarUrl ?? undefined}
-                  alt="User Avatar"
                   sx={{
                     width: 48,
-                    height: 48,
-                    bgcolor: user?.avatarUrl ? "white" : undefined
+                    height: 48
                   }}
                 />
               </ListItemIcon>

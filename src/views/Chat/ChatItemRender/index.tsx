@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  Avatar,
   Backdrop,
   Box,
   Chip,
@@ -9,6 +8,7 @@ import {
 } from "@mui/material";
 import { useStore } from "@/state/hooks";
 import type { ChatItem } from "../types";
+import LetterAvatar from "@/components/LetterAvatar";
 
 export function ChatItemRender() {
   const messages: ChatItem[] = useStore(({ chat }) => chat.data);
@@ -101,11 +101,11 @@ function GroupedChatItemsRender({ group }: { group: ChatItem[] }) {
             alignSelf: "flex-end"
           }}
         >
-          <Avatar
+          <LetterAvatar
+            name={`User ${senderId}`}
             sx={{
               boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
             }}
-            src={`https://api.dicebear.com/9.x/fun-emoji/svg?seed=${senderId}`}
           />
         </Box>
       )}

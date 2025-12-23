@@ -8,7 +8,7 @@ import {
 } from "./items";
 import { SettingMenuItemType, type SettingMenuGroup } from "./types";
 
-export interface SettingMenuProps {
+interface SettingMenuProps {
   groups: SettingMenuGroup[];
 }
 
