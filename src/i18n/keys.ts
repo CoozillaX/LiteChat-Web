@@ -26,6 +26,10 @@ export const I18nKeys = {
     }
   },
 
+  emojiPicker: {
+    root: "emojiPicker.root"
+  },
+
   login: {
     title: "login.title",
     email: "login.email",

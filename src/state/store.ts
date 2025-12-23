@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import localForage from "localforage";
 import appReducer from "@/views/App/slice";
+import chatReducer from "@/views/Chat/slice";
 
 localForage.config({
   name: "LITECHAT",
@@ -9,7 +10,8 @@ localForage.config({
 });
 
 const rootReducer = combineReducers({
-  app: appReducer
+  app: appReducer,
+  chat: chatReducer
 });
 
 const persistedReducer = persistReducer({

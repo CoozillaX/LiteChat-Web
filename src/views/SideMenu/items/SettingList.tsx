@@ -89,6 +89,12 @@ export function SettingList() {
           label: I18nKeys.settings.language.title,
           icon: <Language fontSize="small" />,
           path: "/settings/language"
+        },
+        {
+          type: SettingMenuItemType.Link,
+          label: "Test",
+          icon: <Language fontSize="small" />,
+          path: "/contacts/chat"
         }
       ]
     ],

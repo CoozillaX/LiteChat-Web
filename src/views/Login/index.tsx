@@ -51,6 +51,7 @@ export default function Index() {
     }
     store.dispatch(
       setUser({
+        id: 1,
         firstName: "Password",
         lastName: "User",
         email: data.email,
@@ -64,6 +65,7 @@ export default function Index() {
   const onPasskeyLogin = () => {
     store.dispatch(
       setUser({
+        id: 1,
         firstName: "Passkey",
         lastName: "User",
         email: "test1@aaa.com",

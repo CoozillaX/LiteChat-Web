@@ -67,11 +67,14 @@ export function ChatList() {
                     </Typography>
                   </Box>
                 }
-                secondary={
-                  chat.lastMessage.length > 24
-                    ? chat.lastMessage.slice(0, 24) + "..."
-                    : chat.lastMessage
-                }
+                secondary={chat.lastMessage}
+                slotProps={{
+                  secondary: {
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap"
+                  }
+                }}
               />
             </ListItemButton>
             <Divider component="div" />

@@ -51,7 +51,8 @@ export default function Index({
       {/* Top Bar */}
       <Box
         sx={{
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
           height: 32
         }}
@@ -59,11 +60,11 @@ export default function Index({
         {/* Left side slot */}
         <Box
           sx={{
-            width: 50,
             height: 1,
             display: "flex",
+            justifyContent: "flex-start",
             alignItems: "center",
-            justifyContent: "flex-start"
+            overflow: "hidden"
           }}
         >
           {leftSlot ?? null}
@@ -72,7 +73,7 @@ export default function Index({
         {/* Title */}
         <Box
           sx={{
-            flex: 1,
+            px: 2,
             textAlign: "center",
             pointerEvents: "none"
           }}
@@ -85,11 +86,10 @@ export default function Index({
         {/* Right side slot */}
         <Box
           sx={{
-            width: 50,
-            height: 1,
             display: "flex",
+            justifyContent: "flex-end",
             alignItems: "center",
-            justifyContent: "flex-end"
+            overflow: "hidden"
           }}
         >
           {rightSlot ?? null}

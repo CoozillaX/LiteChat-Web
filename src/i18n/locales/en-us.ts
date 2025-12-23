@@ -1,3 +1,4 @@
+import eMartI18nEn from "@emoji-mart/data/i18n/en.json";
 import { I18nKeys } from "../keys";
 
 export default {
@@ -26,6 +27,9 @@ export default {
   [I18nKeys.turnstile.executing]: "Waiting for Turnstile...",
   [I18nKeys.turnstile.error.invalidToken]:
     "The Turnstile verification token is invalid. Please complete the challenge again.",
+
+  // ==================== EMOJI PICKER =====================
+  [I18nKeys.emojiPicker.root]: eMartI18nEn,
 
   // ===================== LOGIN =====================
   [I18nKeys.login.title]: "Sign in to LiteChat",

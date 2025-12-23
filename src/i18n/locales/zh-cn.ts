@@ -1,3 +1,4 @@
+import eMartI18nZh from "@emoji-mart/data/i18n/zh.json";
 import { I18nKeys } from "../keys";
 
 export default {
@@ -19,6 +20,9 @@ export default {
   [I18nKeys.turnstile.executing]: "正在等待 Turnstile...",
   [I18nKeys.turnstile.error.invalidToken]:
     "Turnstile 验证令牌无效。请重新完成验证挑战。",
+
+  // ==================== EMOJI PICKER =====================
+  [I18nKeys.emojiPicker.root]: eMartI18nZh,
 
   // ===================== LOGIN =====================
   [I18nKeys.login.title]: "登录 LiteChat",
